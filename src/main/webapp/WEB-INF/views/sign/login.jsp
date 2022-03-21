@@ -1,5 +1,4 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -32,31 +31,36 @@
 <%--    <input type="hidden" name="returnUrl" value="">--%>
 
 
-
     <!-- Join Form -->
     <div class="join-form">
+
         <div class="n-form-set">
-            <label for="memberId" class="n-form-label">아이디 <span class="essential">필수 입력</span></label>
-            <input type="text" class="n-input input" id="memberId" name="id" placeholder="아이디 입력(5~11자)" minlength="5" maxlength="11">
-            <button type="button" class="check-duplication" id="checkId">중복확인</button>
+            <label for="id" class="n-form-label">아이디 <span class="essential">필수 입력</span></label>
+            <input type="text" class="n-input input" id="id" name="id" placeholder="아이디 입력(5~11자)" minlength="5" maxlength="11">
+            <div class="input-group-append">
+                <button type="button" class="btn btn-primary" id="checkId">중복확인</button>
+            </div>
             <p class="n-validation" id="hLayerid"></p>
         </div>
+
         <div class="n-form-set">
-            <label for="password" class="n-form-label">비밀번호 <span class="essential">필수 입력</span></label>
+            <label for="pass" class="n-form-label">비밀번호 <span class="essential">필수 입력</span></label>
             <div class="n-form-icon">
-                <input type="password" class="n-input input" id="password" name="pass" minlength="8" autocomplete="new-password" placeholder="비밀번호(숫자,영문,특수문자 조합 최소8자)">
+                <input type="password" class="n-input input" id="pass" name="pass" minlength="8" autocomplete="new-password" placeholder="비밀번호(숫자,영문,특수문자 조합 최소8자)">
                 <p class="n-validation" id="passwordValidMessage"></p>
                 <button type="button" class="btn" onclick="togglePassword('password', this);">
                     <i class="ic-30-solid-show ic-gray5">비밀번호 보기</i>
                 </button>
             </div>
+
             <div class="n-form-icon">
-                <input type="password" class="n-input input" id="confirmPassword" name="passCheck" autocomplete="new-password" minlength="8" placeholder="비밀번호 확인">
+                <input type="password" class="n-input input" id="passCheck" name="passCheck" autocomplete="new-password" minlength="8" placeholder="비밀번호 확인">
                 <p class="n-validation" id="passwordConfirmValidMessage"></p>
                 <button type="button" class="btn" onclick="togglePassword('confirmPassword', this);">
                     <i class="ic-30-solid-show ic-gray5">비밀번호 보기</i>
                 </button>
             </div>
+
         </div>
         <div class="n-form-set">
             <label for="email" class="n-form-label">이메일 <span class="essential">필수 입력</span></label>
@@ -81,13 +85,14 @@
                     </li>
                 </ul>
             </div>
+
             <p class="n-txt-info">신규가입혜택(15% 할인 쿠폰/인기상품 990원 특가) 안내가 이메일로 제공됩니다. 본인의 이메일을 정확하게
                 입력해주세요.</p>
         </div>
 
         <div class="n-form-set">
-            <label for="recommendMemberId" class="n-form-label">추천인(친구초대이벤트 참여 아이디)</label>
-            <input type="text" class="n-input" minlength="4" maxlength="17" id="recommendMemberId" name="inviteId" placeholder="추천인 아이디 입력" value="">
+            <label for="inviteId" class="n-form-label">추천인(친구초대이벤트 참여 아이디)</label>
+            <input type="text" class="n-input" minlength="4" maxlength="17" id="inviteId" name="inviteId" placeholder="추천인 아이디 입력" value="">
             <p class="n-validation" id="hLayerRecommendMemberId"></p>
         </div>
 
@@ -97,6 +102,7 @@
                 <input type="checkbox" class="n-check" id="checkAll">
                 <label for="checkAll" class="all">약관 전체동의</label>
             </div>
+
             <div>
                 <input type="checkbox" class="n-check agree-item required-agree-item" id="agreeCheckbox" name="agreeCheckbox">
                 <label for="agreeCheckbox">개인정보 수집 이용동의(필수)</label>
@@ -114,6 +120,7 @@
                 <label for="marketingReceiveAgreeYn">마케팅 활용 및 광고성 정보 수신 동의(선택)</label>
                 <button type="button" class="link" onclick="marketingAgreementPopBtnClickHandler()">약관보기</button>
             </div>
+
             <div>
                 <input type="checkbox" class="n-check agree-item required-agree-item" id="ageAgreeCheckbox" name="ageAgreeCheckbox">
                 <label for="ageAgreeCheckbox">만 14세 미만 가입 제한(필수)</label>
@@ -121,6 +128,7 @@
         </div>
 
     </div>
+
     <div id="joinBtnDiv" class="member-btn">
 
         <button type="submit" id="joinBtn" class="n-btn btn-primary disabled">본인인증하고 회원가입</button>
@@ -132,6 +140,7 @@
     <button type="button" class="n-link gtm-catch-click" onclick="moveBuyNonMember();" data-gtm-cd-23="not_member" data-gtm-cd-19="button" data-gtm-cd-20="/member/join" data-gtm-cd-21="2" data-gtm-category="not_member" data-gtm-action="client.click" data-gtm-label="비회원구매하기">
         비회원 구매하기
     </button>
+
 </form>
 </body>
 </html>

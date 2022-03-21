@@ -8958,3 +8958,11 @@ body {
 .hyundaicard-text__comment>svg {
     vertical-align: sub
 }
+
+.check-duplication {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 150px;
+}

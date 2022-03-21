@@ -7,6 +7,7 @@ import lombok.Setter;
 @Setter
 public class Sign {
 
+    private int idx;
     private String id;
     private String pass;
     private String passCheck;

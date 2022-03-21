@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.crud.repository.SignRepository">
+
+    <!--1. 회원가입 -->
+    <insert id="addUserInfo" parameterType="Sign">
+      insert into taehan.Sign (id, pass, email, inviteId)
+            values (#{id}, #{pass}, #{email}, #{inviteId})
+    </insert>
+
+    <!--2. 아이디 중복체크-->
+    <select id="checkUserId" parameterType="String" resultType="String">
+        select id from taehan.Sign where id=#{id}
+    </select>
+
+    <!--3. 회원가입으로 로그인 연결-->
+    <select id="userLoginCon" parameterType="Sign" resultType="Sign">
+        select id, pass from taehan.Sign where id=#{id}
+    </select>
+
+<!--    &lt;!&ndash;4. 회원가입으로 마이페이지 연결&ndash;&gt;-->
+<!--    <select id="userMyPageCon" parameterType="Sign" resultType="Sign">-->
+<!--        select * from taehan.Sign where idx=#{idx}-->
+<!--    </select>-->
+
+<!--    &lt;!&ndash;5. 마이페이지 업데이트 시 회원가입도 업데이트 연결&ndash;&gt;-->
+<!--    <update id="userMyPageUpdate" parameterType="Sign">-->
+<!--        update taehan.Sign set id=#{id}, pass=#{pass} where idx=#{idx}-->
+<!--    </update>-->
+
+</mapper>
