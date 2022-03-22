@@ -20,6 +20,13 @@ public class IndexController {
 
         return new ModelAndView("sign/signUp");
     }
+
+    //http://localhost8082/login
+    @RequestMapping(path = "login")
+    public ModelAndView login() {
+
+        return new ModelAndView("sign/login");
+    }
 }
 
 
