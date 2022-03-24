@@ -5,8 +5,8 @@
 
     <!--1. 회원가입 -->
     <insert id="addUserInfo" parameterType="Sign">
-      insert into taehan.Sign (id, pass, email, inviteId)
-            values (#{id}, #{pass}, #{email}, #{inviteId})
+      insert into taehan.Sign (id, pass, email, address)
+            values (#{id}, #{pass}, #{email}, #{address})
     </insert>
 
     <!--2. 아이디 중복체크-->

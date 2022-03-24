@@ -7,8 +7,8 @@
     <meta charset="UTF-8">
     <title>Title</title>
 
-    <link type="text/css" rel="stylesheet" href="/resources/css/signUp1.css"/>
-    <link type="text/css" rel="stylesheet" href="/resources/css/signUp2.css"/>
+    <link type="text/css" rel="stylesheet" href="/resources/css/sign/signUp1.css"/>
+    <link type="text/css" rel="stylesheet" href="/resources/css/sign/signUp2.css"/>
 
 </head>
 <body>
@@ -41,6 +41,7 @@
             <button type="button" class="check-duplication" id="checkId">중복확인</button>
             <p class="n-validation" id="hLayerid"></p>
         </div>
+
         <div class="n-form-set">
             <label for="password" class="n-form-label">비밀번호 <span class="essential">필수 입력</span></label>
             <div class="n-form-icon">
@@ -58,6 +59,7 @@
                 </button>
             </div>
         </div>
+
         <div class="n-form-set">
             <label for="email" class="n-form-label">이메일 <span class="essential">필수 입력</span></label>
             <div class="n-form-layer" id="emailFromLayer">
@@ -86,8 +88,8 @@
         </div>
 
         <div class="n-form-set">
-            <label for="recommendMemberId" class="n-form-label">추천인(친구초대이벤트 참여 아이디)</label>
-            <input type="text" class="n-input" minlength="4" maxlength="17" id="recommendMemberId" name="inviteId" placeholder="추천인 아이디 입력" value="">
+            <label for="address" class="n-form-label">주소</label>
+            <input type="text" class="n-input" minlength="4" maxlength="17" id="address" name="address" placeholder="주소 입력" value="">
             <p class="n-validation" id="hLayerRecommendMemberId"></p>
         </div>
 

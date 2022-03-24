@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.crud.repository.MypageRepository">
+
+    <!--1. 회원가입으로 마이페이지 연결-->
+    <select id="userMyPageCon" parameterType="Sign" resultType="Sign">
+        select * from taehan.Sign where idx=#{idx}
+    </select>
+
+    <!--2. 마이페이지 업데이트 시 회원가입도 업데이트 연결-->
+    <update id="userMyPageUpdate" parameterType="Sign">
+        update taehan.Sign set id=#{id}, pass=#{pass}, address=#{address} where idx=#{idx}
+    </update>
+
+</mapper>

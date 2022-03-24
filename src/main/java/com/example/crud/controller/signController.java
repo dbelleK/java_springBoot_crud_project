@@ -5,10 +5,9 @@ import com.example.crud.service.SignService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+
 
 @Slf4j
 @RequiredArgsConstructor
@@ -19,10 +18,19 @@ public class signController {
 
     @PostMapping("/signUpPro")
     public String signUpPro(Sign sign){
-        signService.checkUserId(sign.getId());
         signService.addUserInfo(sign);
+        signService.checkUserId(sign.getId());
         return "sign/login";
     }
+
+    @PostMapping("/loginPro")
+    public String loginPro(Sign sign , Model model){
+        Sign sessionUser = signService.userLoginCon(sign);
+        model.addAttribute("sessionUser",sessionUser);
+        return "index";
+    }
+
+
 
 
 

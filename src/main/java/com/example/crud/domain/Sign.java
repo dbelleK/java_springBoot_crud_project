@@ -12,6 +12,6 @@ public class Sign {
     private String pass;
     private String passCheck;
     private String email;
-    private String inviteId;
+    private String address;
 
 }

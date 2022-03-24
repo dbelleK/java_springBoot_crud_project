@@ -6,14 +6,16 @@
     <meta charset="UTF-8">
     <title>Title</title>
 
-    <link type="text/css" rel="stylesheet" href="/resources/css/signUp1.css"/>
-    <link type="text/css" rel="stylesheet" href="/resources/css/signUp2.css"/>
+    <link type="text/css" rel="stylesheet" href="/resources/css/sign/signUp1.css"/>
+    <link type="text/css" rel="stylesheet" href="/resources/css/sign/signUp2.css"/>
 
 
 </head>
 <body>
 
 <div class="container login" role="main">
+
+    <form class="formBox" name="loginForm" id="loginForm" method="post" action="/loginPro">
     <!-- ANCHOR Common Appbar -->
     <div id="headerCommonLayout"><header data-system="CCommonAppbar" class="common-layout__sc-1q47zu5-0 lbAVMi"><h1>무신사 스토어</h1><div class="common-layout__sc-1q47zu5-1 fhWAHi"><h2 class="common-layout__sc-wllrag-0 fuSBOR">로그인</h2><div class="common-layout__sc-1q47zu5-2 common-layout__sc-1q47zu5-3 jylTdg fehdnF"><button class="common-layout__sc-1w1f44c-0-button jNqhOq gtm-catch-click" data-gtm-cd-23="header" data-gtm-cd-19="button" data-gtm-cd-21="101" data-gtm-category="header" data-gtm-action="client.click" data-gtm-label="back"><span class="common-layout__sc-1w1f44c-1 gQwfAI">이전 페이지로 이동</span><svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"><path d="M19 5L9 14.9994L19 25" stroke="black"></path></svg></button></div><div class="common-layout__sc-1q47zu5-2 common-layout__sc-1q47zu5-4 jylTdg kcEGpO"></div></div></header></div><!-- content -->
     <section class="content content--no-interval">
@@ -22,21 +24,24 @@
             <a href="javascript:void(0);" id="login-tab" class="MCommonTabUnderline__button MCommonTabUnderline__button--active">가입 회원 </a>
             <a href="javascript:void(0);" id="buy-tab" class="MCommonTabUnderline__button" data-popup-open="loginBottomsheetFix" style="display: none;">비회원 구매하기</a>
             <a href="javascript:void(0);" id="buy-search-tab" class="MCommonTabUnderline__button" style="">비회원 주문 조회</a>
-        </nav><!-- //tab -->
+        </nav>
+    <!-- //tab -->
+
         <!-- login-member -->
         <div class="login-member">
 
             <form name="loginform" class="login-form" action="/auth/login" method="post" onsubmit="return loginCheck(this);">
                 <div class="login-member__form">
-                    <input type="hidden" id="cipherKey" name="cipherKey" value="01e11538030ea3147fee96bfc8975f1a">
-                    <input type="hidden" id="cipherVersion" name="cipherVersion" value="V1">
-                    <input type="hidden" id="csrfToken" name="csrfToken" value="01e11538030ea3147fee96bfc8975f1a042cfde3">
-                    <input type="hidden" id="eventPage" name="eventPage" value="">
-                    <input type="hidden" id="eventCode" name="eventCode" value="">
-                    <input type="hidden" id="refererFromLoginPage" name="referer" value="https://www.musinsa.com/app/">
-                    <input type="hidden" id="encryptMemberId" name="encryptMemberId">
-                    <input type="hidden" id="encryptPassword" name="encryptPassword">
-                    <input type="hidden" id="isCheckGoogleRecaptcha" name="isCheckGoogleRecaptcha" value="false">
+<%--                    <input type="hidden" id="cipherKey" name="cipherKey" value="01e11538030ea3147fee96bfc8975f1a">--%>
+<%--                    <input type="hidden" id="cipherVersion" name="cipherVersion" value="V1">--%>
+<%--                    <input type="hidden" id="csrfToken" name="csrfToken" value="01e11538030ea3147fee96bfc8975f1a042cfde3">--%>
+<%--                    <input type="hidden" id="eventPage" name="eventPage" value="">--%>
+<%--                    <input type="hidden" id="eventCode" name="eventCode" value="">--%>
+<%--                    <input type="hidden" id="refererFromLoginPage" name="referer" value="https://www.musinsa.com/app/">--%>
+<%--                    <input type="hidden" id="encryptMemberId" name="encryptMemberId">--%>
+<%--                    <input type="hidden" id="encryptPassword" name="encryptPassword">--%>
+<%--                    <input type="hidden" id="isCheckGoogleRecaptcha" name="isCheckGoogleRecaptcha" value="false">--%>
+
                     <div class="login-input">
                         <div class="login-input__wrap">
                             <input type="text" name="id" class="login-input__input" title="아이디 입력" placeholder="아이디">
@@ -49,6 +54,7 @@
                             </button>
                         </div>
                     </div>
+
                     <div class="login-input">
                         <div class="login-input__wrap">
                             <input type="password" name="pw" class="login-input__input" title="비밀번호 입력" placeholder="비밀번호">
@@ -67,14 +73,14 @@
                 <div class="login-button login-button--static">
                     <button type="submit" class="login-button__item login-button__item--black">로그인</button>
                 </div>
+
                 <div class="login-member__util">
                     <div class="login-checkbox login-member__util__login-auto">
                         <input type="checkbox" id="autologin" name="autologin" value="1" class="blind login-member__util__login-auto__checkbox">
                         <label for="autologin" id="labelAutoLogin" class="login-checkbox__label login-member__util__login-auto__label" data-tooltip="login-member__util__login-auto__tooltip">자동 로그인</label>
-                        <div id="tooltipAutoLogin" class="login-member__util__login-auto__tooltip">개인 정보 보호를 위해 본인
-                            기기에서만 이용해주세요.
-                        </div>
+                        <div id="tooltipAutoLogin" class="login-member__util__login-auto__tooltip">개인 정보 보호를 위해 본인 기기에서만 이용해주세요. </div>
                     </div>
+
                     <ul class="login-member__util__list">
                         <li class="login-member__util__item">
                             <a id="id-search" href="#" class="gtm-catch-click" data-gtm-cd-23="login_navi" data-gtm-cd-19="button" data-gtm-cd-20="/login" data-gtm-cd-21="1" data-gtm-category="login_navi" data-gtm-action="client.click" data-gtm-label="아이디찾기">아이디 찾기</a>
@@ -84,9 +90,10 @@
                         </li>
                     </ul>
                 </div>
-            </form>
-            <div class="login-button login-button--static login-social">
 
+            </form>
+
+            <div class="login-button login-button--static login-social">
                 <a href="javascript:void(0)" class="login-button__item login-button__item--kakao" id="loginWithKakao">
                     <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" class="login-button__item__logo">
                         <title>kakao 로고</title>
@@ -94,18 +101,11 @@
                     </svg>
                     카카오 로그인
                 </a>
-
-
-                <a href="javascript:void(0)" onclick="appleLogin(&quot;https:\/\/appleid.apple.com\/auth\/authorize?client_id=com.musinsa.appleid\u0026redirect_uri=https:\/\/my.musinsa.com\/member\/v1\/sns\/login\/apple\/callback\u0026scope=email\u0026state=01e11538030ea3147fee96bfc8975f1a042cfde3\u0026response_type=code id_token\u0026response_mode=form_post&quot;);" class="login-button__item login-button__item--apple">
-                    <svg width="29" height="30" viewBox="0 0 29 30" fill="none" xmlns="http://www.w3.org/2000/svg" class="login-button__item__logo">
-                        <title>apple 로고</title>
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M17.6734 6.53179C17.0545 7.30483 16.0153 7.88462 15.1863 7.88462C15.0929 7.88462 14.9995 7.87254 14.9411 7.86046C14.9294 7.81214 14.9061 7.6672 14.9061 7.52225C14.9061 6.53179 15.3848 5.56548 15.9102 4.94946C16.5758 4.14018 17.685 3.53624 18.6074 3.5C18.6308 3.60871 18.6425 3.74158 18.6425 3.87444C18.6425 4.85283 18.2338 5.83121 17.6734 6.53179ZM13.6127 22.1399C13.1966 22.3248 12.8023 22.5 12.2673 22.5C11.123 22.5 10.329 21.4129 9.41827 20.0842C8.35574 18.514 7.4917 16.0861 7.4917 13.7912C7.4917 10.095 9.81526 8.13827 12.1038 8.13827C12.7718 8.13827 13.3821 8.39164 13.9248 8.61693C14.3592 8.79728 14.7503 8.95963 15.0929 8.95963C15.3901 8.95963 15.7604 8.80823 16.1921 8.63177C16.795 8.38531 17.5175 8.08996 18.3272 8.08996C18.841 8.08996 20.7208 8.13827 21.9585 9.97425C21.9514 9.97996 21.9363 9.99029 21.9142 10.0053C21.6097 10.2133 19.9852 11.3227 19.9852 13.5979C19.9852 16.4123 22.3555 17.4148 22.4372 17.439C22.4351 17.4444 22.4303 17.4599 22.4226 17.4845C22.3447 17.7339 21.9733 18.9232 21.1762 20.1325C20.3939 21.2921 19.5649 22.4758 18.3272 22.4758C17.7172 22.4758 17.3285 22.2978 16.9272 22.1139C16.4989 21.9177 16.0562 21.7149 15.3148 21.7149C14.5693 21.7149 14.0774 21.9334 13.6127 22.1399Z" fill="black"></path>
-                    </svg>
-                    Apple 로그인
-                </a>
-
             </div>
-        </div><!-- //login-member -->
+
+        </div>
+    <!-- //login-member -->
+
         <div class="login-nonmember buy" id="nonMemberOrder" data-tab="nonMemberOrder" style="display: none;">
             <div class="login-nonmember__clause" tabindex="0">비회원정보수집 동의
                 <br>비회원 개인정보보호정책은 비회원으로 주문하는 고객님의 개인정보 보호를 위하여 무신사가 실시하는 개인정보 수집의 목적과 그 정보의 정책에 관한 규정입니다.

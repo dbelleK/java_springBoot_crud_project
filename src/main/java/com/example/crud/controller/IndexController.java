@@ -27,6 +27,20 @@ public class IndexController {
 
         return new ModelAndView("sign/login");
     }
+
+    //http://localhost8082/mypageMain
+    @RequestMapping(path = "mypageInfo")
+    public ModelAndView mypageInfo() {
+
+        return new ModelAndView("mypage/mypageInfo");
+    }
+
+    //http://localhost8082/mypageWhislist
+    @RequestMapping(path = "mypageWhislist")
+    public ModelAndView mypageWhislist() {
+
+        return new ModelAndView("mypage/mypageWhislist");
+    }
 }
 
 

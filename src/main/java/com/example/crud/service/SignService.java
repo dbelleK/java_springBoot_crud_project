@@ -39,13 +39,15 @@ public class SignService {
     }
 
     // 3. 회원가입으로 로그인 연결
-    public void userLoginCon(Sign sign) {
+    public Sign userLoginCon(Sign sign) {
         Sign loginSuccess = signRepository.userLoginCon(sign);
 
+        //아이디 비밀번호가 있으면
         if (loginSuccess != null) {
                 loginBean.setId(loginSuccess.getId());
                 loginBean.setPass(loginSuccess.getPass());
         }
+        return loginBean;
     }
 
 }

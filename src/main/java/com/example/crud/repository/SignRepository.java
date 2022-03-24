@@ -15,11 +15,7 @@ public interface SignRepository {
     // 3. 회원가입으로 로그인 연결 (정보 넘기고 회원가입과 로그인이 일치하는지 아는지 확인해야하니 리턴)
     Sign userLoginCon(Sign sign);
 
-//    // 4. 회원가입으로 마이페이지 연결 (정보 넘기고 회원가입과 마이페이지 연결해야하니 리턴)
-//    Sign userMyPageCon(Sign sign);
-//
-//    // 5. 마이페이지 업데이트 시 회원가입도 업데이트 연결 (update set where -> 정보만 업데이트하는 거니 리턴x 이미 4에서 연결함)
-//    void userMyPageUpdate(Sign sign);
+
 
 
 
