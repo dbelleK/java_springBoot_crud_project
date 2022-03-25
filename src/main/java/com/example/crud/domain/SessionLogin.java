@@ -9,7 +9,7 @@ public class SessionLogin {
 
     @Bean("loginBean")
     @SessionScope
-    public Sign loginState(){
+    public Sign loginBean(){
         return new Sign();
     }
 

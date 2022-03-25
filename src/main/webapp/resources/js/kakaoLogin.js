@@ -13,15 +13,14 @@ function kakaoLogin() {
             Kakao.API.request({
                 url: '/v2/user/me',
                 success: function (response) {
-
                     let email = response.kakao_account.email ;
-                    let id = response.id;
+                    let kakaoId = response.id;
 
                     if(email == '' || email == undefined){
                         alert("전체 동의하기 또는 카카오계정(이메일)을 필수 선택해주세요")
                         kakaoLogout();
                     }else{
-                        responseSuccessLogin(email, id);
+                        responseSuccessLogin(email, kakaoId);
                     }
 
 
@@ -54,18 +53,20 @@ function kakaoLogout() {
     }
 }
 
-function responseSuccessLogin() {
+function responseSuccessLogin(email, kakaoId) {
 
     $.ajax({
 
-        type: 'post',
+        type: 'POST',
         url: 'kakao/sns/login',
         data: {
             "email": email,
-            "id": id
+            "kakaoId": kakaoId
         },
         success: function(response) {
 
+            // 로그인
+            location.href = "/loginBykakao?email="+response.email;
         },
         fail: function(error) {
 

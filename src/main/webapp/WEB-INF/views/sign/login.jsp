@@ -9,7 +9,7 @@
     <link type="text/css" rel="stylesheet" href="/resources/css/sign/signUp1.css"/>
     <link type="text/css" rel="stylesheet" href="/resources/css/sign/signUp2.css"/>
 <%--    <link type="text/css" rel="stylesheet" href="/resources/css/sign/login.css"/>--%>
-
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
     <style>
 
         body {

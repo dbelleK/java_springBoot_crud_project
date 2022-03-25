@@ -24,14 +24,19 @@ public class SignService {
 
     // 1. 회원가입 (insert into -> 넣기만 하는 거니 리턴x)
     public void addUserInfo(Sign sign) {
+
         signRepository.addUserInfo(sign);
     }
 
     // 2. 아이디 중복체크 (아이디 중복해보고 중복인지 아닌지 확인해야하니 리턴)
     public boolean checkUserId(String id) {
-        String checkId = signRepository.checkUserId(id);
 
-        if (checkId == null) {
+        Sign sign = new Sign();
+        sign.setId(id);
+
+        Sign checkkUser = signRepository.getUserInfo(sign.getEmail());
+
+        if (checkkUser.getId() == null) {
             return true;
         } else {
             return false;
@@ -39,15 +44,15 @@ public class SignService {
     }
 
     // 3. 회원가입으로 로그인 연결
-    public Sign userLoginCon(Sign sign) {
-        Sign loginSuccess = signRepository.userLoginCon(sign);
+    public Sign userLoginCon(String email) {
+        Sign loginSuccess = signRepository.getUserInfo(email);
 
         //아이디 비밀번호가 있으면
         if (loginSuccess != null) {
-                loginBean.setId(loginSuccess.getId());
-                loginBean.setPass(loginSuccess.getPass());
+                loginBean.setEmail(loginSuccess.getEmail());
+//                loginBean.setPass(loginSuccess.getPass());
         }
-        return loginBean;
+         return loginBean;
     }
 
 }

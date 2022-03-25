@@ -13,5 +13,8 @@ public class Sign {
     private String passCheck;
     private String email;
     private String address;
+    private String birthday;
+    private String kakaoId;
+
 
 }

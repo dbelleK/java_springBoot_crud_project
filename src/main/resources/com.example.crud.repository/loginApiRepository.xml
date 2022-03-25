@@ -3,7 +3,18 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.crud.repository.api.LoginApiRepository">
 
+    <insert id="joinUserByKakao" parameterType="Sign">
+        insert into taehan.Sign (id, email, birthday, kakaoId)
+        values (#{id}, #{email}, #{birthday}, #{kakaoId})
+    </insert>
 
+    <select id="checkUserByKakao" parameterType="String" resultType="Sign">
+        select id, email, kakaoId from taehan.Sign where email=#{email}
+    </select>
+
+    <update id="updateUserByKakao" parameterType="String" >
+        update taehan.Sign set kakaoId=#{kakaoId} where email=#{email}
+    </update>
 
 
 </mapper>
