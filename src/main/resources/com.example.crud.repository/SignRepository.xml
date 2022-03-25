@@ -19,14 +19,5 @@
         select id, pass from taehan.Sign where id=#{id}
     </select>
 
-<!--    &lt;!&ndash;4. 회원가입으로 마이페이지 연결&ndash;&gt;-->
-<!--    <select id="userMyPageCon" parameterType="Sign" resultType="Sign">-->
-<!--        select * from taehan.Sign where idx=#{idx}-->
-<!--    </select>-->
-
-<!--    &lt;!&ndash;5. 마이페이지 업데이트 시 회원가입도 업데이트 연결&ndash;&gt;-->
-<!--    <update id="userMyPageUpdate" parameterType="Sign">-->
-<!--        update taehan.Sign set id=#{id}, pass=#{pass} where idx=#{idx}-->
-<!--    </update>-->
 
 </mapper>
