@@ -7716,7 +7716,7 @@ body {
 
 .n-member-area {
     box-sizing: border-box;
-    max-width: 385px;
+    /*max-width: 385px;*/
     min-height: calc(100vh - 50px);
     margin: 0 auto;
     padding-bottom: 100px
