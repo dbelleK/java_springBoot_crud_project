@@ -33,6 +33,8 @@ public class signController {
         return "index";
     }
 
+    //ajax success 연결 매핑
+    // Model로 email을 넘겨줘야지 index페이지에서 이사람이 로그인이 된 사람인지 아닌지 확인가능
     @GetMapping("/loginBykakao")
     public String kakoLogin(String email, Model model){
         Sign sessionUser = signService.userLoginCon(email);

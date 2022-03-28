@@ -15,8 +15,8 @@ public class kakaoLoginApiController {
 
     @ResponseBody
     @PostMapping(value="kakao/sns/login")
-    public Sign responseSuccessLogin(String email, String kakaoId){
-        Sign sign = loginApiService.checkUserByKakao(email,kakaoId);
-        return sign;
+    public String responseSuccessLogin(Sign kakaoInfo){
+        Sign signs = loginApiService.checkUserByKakao(kakaoInfo);//checkUserByKakao 리턴 타입이 Sign
+        return signs.getEmail();
     }
 }

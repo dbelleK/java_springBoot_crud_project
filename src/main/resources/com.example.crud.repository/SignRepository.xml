@@ -9,12 +9,12 @@
             values (#{id}, #{pass}, #{email}, #{address})
     </insert>
 
-<!--    &lt;!&ndash;2. 아이디 중복체크&ndash;&gt;-->
+<!--    &lt;!&ndash;// 아이디 중복체크&ndash;&gt;-->
 <!--    <select id="checkUserId" parameterType="String" resultType="String">-->
 <!--        select id from taehan.Sign where id=#{id}-->
 <!--    </select>-->
 
-    <!--3. 아이디 중복체크, 회원가입으로 로그인 연결, -->
+    <!--2. 아이디 중복체크, 회원가입으로 로그인 연결, -->
     <select id="getUserInfo" parameterType="String" resultType="Sign">
         select * from taehan.Sign where email = #{email}
     </select>

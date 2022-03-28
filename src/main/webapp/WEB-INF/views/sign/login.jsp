@@ -83,8 +83,8 @@
 
                         <div class="login-input">
                             <div class="login-input__wrap">
-                                <input type="text" name="id" class="login-input__input" title="아이디 입력"
-                                       placeholder="아이디">
+                                <input type="text" name="email" class="login-input__input" title="이메일 입력"
+                                       placeholder="이메일">
                                 <button type="button" class="login-input__button-clear" style="display:none;"
                                         onclick="clearInputValue(this);">
                                 </button>

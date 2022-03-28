@@ -47,7 +47,7 @@ public class SignService {
     public Sign userLoginCon(String email) {
         Sign loginSuccess = signRepository.getUserInfo(email);
 
-        //아이디 비밀번호가 있으면
+        //email이 있으면 이메일을 가져와서 세션스코프 loginBean에 이메일을 저장시켜 전달한다.
         if (loginSuccess != null) {
                 loginBean.setEmail(loginSuccess.getEmail());
 //                loginBean.setPass(loginSuccess.getPass());

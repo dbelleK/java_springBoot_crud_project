@@ -4,8 +4,8 @@
 <mapper namespace="com.example.crud.repository.api.LoginApiRepository">
 
     <insert id="joinUserByKakao" parameterType="Sign">
-        insert into taehan.Sign (id, email, birthday, kakaoId)
-        values (#{id}, #{email}, #{birthday}, #{kakaoId})
+        insert into taehan.Sign (id, email, birthday, kakaoId, profile)
+        values (#{id}, #{email}, #{birthday}, #{kakaoId} , #{profile})
     </insert>
 
     <select id="checkUserByKakao" parameterType="String" resultType="Sign">
@@ -13,7 +13,7 @@
     </select>
 
     <update id="updateUserByKakao" parameterType="String" >
-        update taehan.Sign set kakaoId=#{kakaoId} where email=#{email}
+        update taehan.Sign set kakaoId=#{kakaoId}, profile=#{profile} where email=#{email}
     </update>
 
 
