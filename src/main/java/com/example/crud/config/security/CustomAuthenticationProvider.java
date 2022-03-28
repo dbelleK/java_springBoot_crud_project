@@ -1,5 +1,7 @@
 package com.example.crud.config.security;
 
+import com.example.crud.repository.UserRepository;
+import com.example.crud.service.UserService;
 import com.example.crud.service.api.LoginApiService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
@@ -20,11 +22,13 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
     //특정 페이지 접속할 수 없게 권한 준다 예를 들어서 마이페이 같은 경우 로그인을 해야만 들어갈 수 있으니까
 
-    private final PasswordEncoder passwordEncoder;
     private final UserService userService;
+    private final PasswordEncoder passwordEncoder;
     private final LoginApiService loginApiService;
     public final Integer SESSION_TIMEOUT_IN_SECONDS = 30*60;
     private final HttpSession httpSession;
+
+
 
     //Authenticationr 기본제공
     //우리가 흔히 하는 아이디/패스워드 사용자 정보를 넣고 실제 가입된 사용자인지 체크한 후 인증에 성공하면
@@ -50,6 +54,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
             springUser = (SpringUser) userService.loadUserByUsername(email);
             this.withdrawalFilter(springUser);
             if (!passwordEncoder.matches(password, springUser.getPassword())) {
+                //암호화되서 온 password와 암호화인 springUser.getPassword()가 암호화되어 있지 않으면 실패 -> 회원가입 시킬 때 비번 암호화 해주어야한다.
                 // 로그인 실패 이력 남기기
 //            userService.updateFailedLoginCountPlus(email);
                 throw new BadCredentialsException("비밀번호가 일치하지 않습니다.");

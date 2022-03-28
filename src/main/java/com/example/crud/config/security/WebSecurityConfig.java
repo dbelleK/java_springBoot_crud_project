@@ -1,5 +1,6 @@
 package com.example.crud.config.security;
 
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -40,6 +41,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     //로그인을 위해서는 SecurityConfig 클래스에 AuthenticationManagerBuilder를 주입해서 인증에 대한 처리
     //인증 매니저들은 인증/인가를 위한 UserDetailsService를 통해서 필요한 정보들을 가져옵니다.
     //UserDetails는 사용자의 정보 + 권한 정보들의 묶음
+
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) {
         auth.authenticationProvider(customAuthenticationProvider);
@@ -66,15 +68,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .and()
                 .authorizeRequests() //authorizeRequests()는 시큐리티 처리에 HttpServletRequest를 이용한다는 것을 의미,요청에 대한 권한을 지정할 수 있다.
-                .antMatchers("/h2-console/*").permitAll()//antMatchers() 특정한 경로를 지정 //permitAll()는 모든 사용자가 접근할 수 있다는 것을 의미
+//                .antMatchers("/h2-console/*").permitAll()//antMatchers() 특정한 경로를 지정 //permitAll()는 모든 사용자가 접근할 수 있다는 것을 의미
                 .antMatchers("/").permitAll()
-                .antMatchers("/login").permitAll()
                 .antMatchers("/error").permitAll()
                 .antMatchers("/resources/**").permitAll()
-                .antMatchers("/user/memberShip").permitAll()
-                .antMatchers("/user/**").hasAnyAuthority("ROLE_USER")
-                .antMatchers("/cs/**").hasAnyAuthority("ROLE_USER") //.hasAuthority() or hasAnyAuthority() : 특정 권한을 가지는 사용자만 접근할 수 있다.
-                .antMatchers("/service/copy/**").hasAnyAuthority("ROLE_USER")
+//                .antMatchers("/sign/**").permitAll()
+                .antMatchers("/signUpPro").permitAll()
+                .antMatchers("/loginPro").permitAll()
+//                .antMatchers("/sign/**").hasAnyAuthority("ROLE_USER")
+//                .antMatchers("/cs/**").hasAnyAuthority("ROLE_USER") //.hasAuthority() or hasAnyAuthority() : 특정 권한을 가지는 사용자만 접근할 수 있다.
+//                .antMatchers("/service/copy/**").hasAnyAuthority("ROLE_USER")
 
                 .and()
                 .logout().logoutUrl("/logout")

@@ -68,6 +68,7 @@
             <div class="login-member">
 
                 <form name="loginform" class="login-form" action="/loginPro" method="post">
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     <div class="login-member__form">
                         <%--                    <input type="hidden" id="cipherKey" name="cipherKey" value="a1860575d3c51365ee7edfbe9aa545b5">--%>
                         <%--                    <input type="hidden" id="cipherVersion" name="cipherVersion" value="V1">--%>

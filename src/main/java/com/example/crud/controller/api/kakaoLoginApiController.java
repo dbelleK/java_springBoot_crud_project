@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.ServletException;
+
 @RestController
 @RequiredArgsConstructor
 public class kakaoLoginApiController {
@@ -15,8 +17,8 @@ public class kakaoLoginApiController {
 
     @ResponseBody
     @PostMapping(value="kakao/sns/login")
-    public String responseSuccessLogin(Sign kakaoInfo){
-        Sign signs = loginApiService.checkUserByKakao(kakaoInfo);//checkUserByKakao 리턴 타입이 Sign
-        return signs.getEmail();
+    public void responseSuccessLogin(Sign kakaoInfo) throws ServletException {
+        loginApiService.checkUserByKakao(kakaoInfo);//checkUserByKakao 리턴 타입이 Sign
+//        return signs.getEmail();
     }
 }

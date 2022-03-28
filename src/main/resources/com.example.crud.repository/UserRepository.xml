@@ -4,9 +4,9 @@
 <mapper namespace="com.example.crud.repository.UserRepository">
 
     <!--1. 회원가입 insert -->
-    <insert id="joinUserByKakao" parameterType="Sign" useGeneratedKeys="true" keyProperty="idx">
-        insert into taehan.Sign (idx, id, email, pass, address, birthday, kakaoId, profile)
-        values (#{idx}, #{id}, #{email}, #{pass}, #{address},  #{birthday}, #{kakaoId} , #{profile})
+    <insert id="joinUserInfo" parameterType="Sign" useGeneratedKeys="true"  keyProperty="idx">
+        insert into taehan.Sign (id, email, pass, address, birthday, kakaoId, profile)
+        values (#{id}, #{email}, #{pass}, #{address},  #{birthday}, #{kakaoId} , #{profile})
     </insert>
 
     <!--2. 이메일로 중복 확인-->

@@ -4,10 +4,8 @@ import com.example.crud.config.security.SpringUser;
 import com.example.crud.domain.Sign;
 import com.example.crud.domain.UserAuthority;
 import com.example.crud.repository.MypageRepository;
-import com.example.crud.repository.SignRepository;
 import com.example.crud.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -26,7 +24,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Transactional
 @Service
@@ -35,11 +32,14 @@ public class UserService implements UserDetailsService {
 
     private final UserRepository userRepository;
     private final MypageRepository mypageRepository;
-
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
 
+    /**
+     * 회원 가입
+     *
+     * @param users
+     */
     public void joinUser(Sign users) {
         //비밀번호 암호화
         users.setPass(passwordEncoder.encode(users.getPass()));
@@ -50,23 +50,39 @@ public class UserService implements UserDetailsService {
         //찾아온 유저정보가 있다면?
         if (users.getIdx() != 0) {
             UserAuthority userAuthority = new UserAuthority();
-            userAuthority.setUserId((long)users.getIdx());
+            userAuthority.setUserId((long) users.getIdx());
             userAuthority.setAuthority("ROLE_USER");
             //유저권한 데이터 삽입
             userRepository.insertAuthority(userAuthority);
         }
-
     }
 
+    public Sign getUserInfo(String email) {
+        Sign user = userRepository.getUserInfo(email);
+        return user;
+    }
+
+    /**
+     * 등록된 회원 정보를 출력
+     * 회원가입 된 email을 가지고 있는 user에 권한을 부여해서 권한을 가지고 있는 SpringUser를 이용하여 springUser로 넘겨준다.
+     *
+     * @param email
+     * @return
+     * @throws UsernameNotFoundException
+     */
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Sign user = userRepository.getUserInfo(email);
-        if(user != null){
-            List<UserAuthority> authority = userRepository.(user.getId());
-
-
-        }else {
-
+        if (user != null) {
+            List<UserAuthority> authority = userRepository.findAuthorityById((long) user.getIdx());
+            List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
+            for (UserAuthority userAuthority : authority) {
+                grantedAuthorities.add(new SimpleGrantedAuthority(userAuthority.getAuthority()));
+            }
+            SpringUser springUser = new SpringUser(user.getEmail(), user.getPass(), grantedAuthorities, user);
+            return springUser;
+        } else {
+            throw new BadCredentialsException("일치하지 않습니다.");
         }
 
 //        Optional<Sign> optionalUser = signRepository.findByEmail(username);
@@ -91,11 +107,4 @@ public class UserService implements UserDetailsService {
         HttpServletResponse response = requestAttributes.getResponse();
         new SecurityContextLogoutHandler().logout(request, response, SecurityContextHolder.getContext().getAuthentication());
     }
-
-    public void withdrawal(Sign users) {
-        users.setPass(passwordEncoder.encode("hellomoca"));
-        mypageRepository.deleteAuthority(users);
-        mypageRepository.deleteUser(users);
-    }
-
 }

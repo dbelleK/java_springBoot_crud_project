@@ -4,7 +4,9 @@ import com.example.crud.domain.Sign;
 import com.example.crud.domain.UserAuthority;
 import com.example.crud.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
 import javax.annotation.Resource;
 
 @RequiredArgsConstructor
@@ -19,13 +21,17 @@ public class SignService {
 
     private final UserRepository userRepository;
 
+    private final PasswordEncoder passwordEncoder;
+
     @Resource(name = "loginBean")
     private Sign loginBean;
 
     // 1. 회원가입 (insert into -> 넣기만 하는 거니 리턴x)
     public void joinUserInfo(Sign sign) {
 
-        userRepository.joinUserInfo(sign);
+        Sign user = sign;
+        user.setPass(passwordEncoder.encode(sign.getPass())); //회원가입시 비밀번호 암호화시켜줘야함
+        userRepository.joinUserInfo(user);
 
         //UserAuthority클래스의 userId와 authority 연결 -> 회원가입시 동시에 권한 설정도 해주어야하기에
         UserAuthority userAuthority = new UserAuthority();
@@ -37,10 +43,10 @@ public class SignService {
     // 2. 이메일 중복체크 (이메일 중복해보고 중복인지 아닌지 확인->회원가입시 같은 이메일 사용자가 있으면 안되니까)
     public boolean checkUserId(Sign sign) {
 
-        Sign checkkUser = userRepository.getUserInfo(sign.getEmail());
+        Sign checkUser = userRepository.getUserInfo(sign.getEmail());
 
         // email이 null이면 즉, 같은 이메일이 없으면 true
-        if (checkkUser.getEmail() == null) {
+        if (checkUser.getEmail() == null) {
             return true;
         } else {
             return false;

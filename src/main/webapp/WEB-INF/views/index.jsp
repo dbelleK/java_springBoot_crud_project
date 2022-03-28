@@ -8,12 +8,12 @@
 </head>
 <body>
     <p>Hello, Spring Boot App</p>
-    <c:if test="${empty sessionUser.email}">
+    <c:if test="${empty user.email}"> <%--CustomLoginSuccessHandler에서 세션 user로 잡음--%>
         <p>로그인된 계정이 없습니다.</p>
     </c:if>
-    <c:if test="${not empty sessionUser.email}">
+    <c:if test="${not empty user.email}">
         <p>
-            ${sessionUser.email} 님 로그인 되었습니다.
+            ${user.email} 님 로그인 되었습니다.
         </p>
     </c:if>
     <p></p>

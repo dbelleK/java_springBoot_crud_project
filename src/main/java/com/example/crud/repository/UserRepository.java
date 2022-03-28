@@ -23,6 +23,10 @@ public interface UserRepository {
     //4. 권한 설정 insert
     void insertAuthority(UserAuthority userAuthority);
 
+    //5. 등록된 권한을 가져온다.
+    @Select("SELECT * FROM taehan.USER_AUTHORITY where user_id = #{id}")
+    List<UserAuthority> findAuthorityById(@Param("id") Long id);
+
 //    @Select("SELECT * FROM moca_client.USER_AUTHORITY where user_id = #{id}")
 //    List<UserAuthority> findAuthorityById(@Param("id") Long id);
 }

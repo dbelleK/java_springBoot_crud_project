@@ -9,9 +9,9 @@ public class Sign {
 
     private int idx;
     private String id;
+    private String email;
     private String pass;
     private String passCheck;
-    private String email;
     private String address;
     private String birthday;
     private String kakaoId;

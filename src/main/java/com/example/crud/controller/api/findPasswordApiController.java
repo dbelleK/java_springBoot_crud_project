@@ -3,24 +3,24 @@ package com.example.crud.controller.api;
 import com.example.crud.domain.MailDto;
 import com.example.crud.domain.Sign;
 import com.example.crud.repository.MypageRepository;
-import com.example.crud.repository.SignRepository;
-import com.example.crud.service.api.LoginApiService;
+import com.example.crud.repository.UserRepository;
 import com.example.crud.service.api.MailService;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-//import org.apache.commons.lang.RandomStringUtils;
 
 import javax.mail.MessagingException;
 import java.io.IOException;
+
+//import org.apache.commons.lang.RandomStringUtils;
 
 @RestController
 public class findPasswordApiController {
 
     @Autowired
-    private SignRepository signRepository;
+    private UserRepository userRepository;
 
     @Autowired
     private MailService mailService;
@@ -42,7 +42,7 @@ public class findPasswordApiController {
 
         //db에 저장되어 잇는 이메일을 찾아 그 이메일이 있으면 그 이메일에 전송 해야하니까 getUserInfo 사용
         //db에 저장되어 있는 이메일 , 아이디 등등이 들어있을테니까
-        Sign signs = signRepository.getUserInfo(mailDto.getEmail());
+        Sign signs = userRepository.getUserInfo(mailDto.getEmail());
 
         if (signs != null){
             // 이메일 전송
