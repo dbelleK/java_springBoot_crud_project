@@ -93,7 +93,7 @@
 
                         <div class="login-input">
                             <div class="login-input__wrap">
-                                <input type="password" name="pw" class="login-input__input" title="비밀번호 입력"
+                                <input type="password" name="pass" class="login-input__input" title="비밀번호 입력"
                                        placeholder="비밀번호">
                                 <button type="button" class="login-input__button-clear" style="display:none;"
                                         onclick="clearInputValue(this);">

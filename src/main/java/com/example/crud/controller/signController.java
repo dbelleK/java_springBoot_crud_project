@@ -21,8 +21,8 @@ public class signController {
 
     @PostMapping("/signUpPro")
     public String signUpPro(Sign sign){
-        signService.addUserInfo(sign);
-        signService.checkUserId(sign.getId());
+        signService.joinUserInfo(sign);
+        signService.checkUserId(sign);
         return "sign/login";
     }
 
@@ -33,7 +33,7 @@ public class signController {
         return "index";
     }
 
-    //ajax success 연결 매핑
+    // ajax success 연결 매핑
     // Model로 email을 넘겨줘야지 index페이지에서 이사람이 로그인이 된 사람인지 아닌지 확인가능
     @GetMapping("/loginBykakao")
     public String kakoLogin(String email, Model model){

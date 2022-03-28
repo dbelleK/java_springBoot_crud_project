@@ -1,10 +1,10 @@
 package com.example.crud.service;
 
 import com.example.crud.domain.Sign;
-import com.example.crud.repository.SignRepository;
+import com.example.crud.domain.UserAuthority;
+import com.example.crud.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import javax.annotation.Resource;
 
 @RequiredArgsConstructor
@@ -17,26 +17,30 @@ public class SignService {
     //  ->xml(실제로 데이터베이스에 저장하기 위핸 sql)
     // 여기서 반대방향으로 가는 경우는 리턴타입이 있을 경우
 
-    private final SignRepository signRepository;
+    private final UserRepository userRepository;
 
     @Resource(name = "loginBean")
     private Sign loginBean;
 
     // 1. 회원가입 (insert into -> 넣기만 하는 거니 리턴x)
-    public void addUserInfo(Sign sign) {
+    public void joinUserInfo(Sign sign) {
 
-        signRepository.addUserInfo(sign);
+        userRepository.joinUserInfo(sign);
+
+        //UserAuthority클래스의 userId와 authority 연결 -> 회원가입시 동시에 권한 설정도 해주어야하기에
+        UserAuthority userAuthority = new UserAuthority();
+        userAuthority.setUserId((long)sign.getIdx());
+        userAuthority.setAuthority("ROLE_USER");
+        userRepository.insertAuthority(userAuthority);
     }
 
-    // 2. 아이디 중복체크 (아이디 중복해보고 중복인지 아닌지 확인해야하니 리턴)
-    public boolean checkUserId(String id) {
+    // 2. 이메일 중복체크 (이메일 중복해보고 중복인지 아닌지 확인->회원가입시 같은 이메일 사용자가 있으면 안되니까)
+    public boolean checkUserId(Sign sign) {
 
-        Sign sign = new Sign();
-        sign.setId(id);
+        Sign checkkUser = userRepository.getUserInfo(sign.getEmail());
 
-        Sign checkkUser = signRepository.getUserInfo(sign.getEmail());
-
-        if (checkkUser.getId() == null) {
+        // email이 null이면 즉, 같은 이메일이 없으면 true
+        if (checkkUser.getEmail() == null) {
             return true;
         } else {
             return false;
@@ -45,12 +49,11 @@ public class SignService {
 
     // 3. 회원가입으로 로그인 연결
     public Sign userLoginCon(String email) {
-        Sign loginSuccess = signRepository.getUserInfo(email);
+        Sign loginSuccess = userRepository.getUserInfo(email);
 
         //email이 있으면 이메일을 가져와서 세션스코프 loginBean에 이메일을 저장시켜 전달한다.
         if (loginSuccess != null) {
                 loginBean.setEmail(loginSuccess.getEmail());
-//                loginBean.setPass(loginSuccess.getPass());
         }
          return loginBean;
     }

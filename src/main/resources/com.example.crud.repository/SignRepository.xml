@@ -1,23 +1,30 @@
+<!--
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.crud.repository.SignRepository">
 
-    <!--1. 회원가입 -->
+    &lt;!&ndash;1. 회원가입 &ndash;&gt;
     <insert id="addUserInfo" parameterType="Sign">
       insert into taehan.Sign (id, pass, email, address)
             values (#{id}, #{pass}, #{email}, #{address})
     </insert>
 
-<!--    &lt;!&ndash;// 아이디 중복체크&ndash;&gt;-->
-<!--    <select id="checkUserId" parameterType="String" resultType="String">-->
-<!--        select id from taehan.Sign where id=#{id}-->
-<!--    </select>-->
+&lt;!&ndash;    &lt;!&ndash;// 아이디 중복체크&ndash;&gt;&ndash;&gt;
+&lt;!&ndash;    <select id="checkUserId" parameterType="String" resultType="String">&ndash;&gt;
+&lt;!&ndash;        select id from taehan.Sign where id=#{id}&ndash;&gt;
+&lt;!&ndash;    </select>&ndash;&gt;
 
-    <!--2. 아이디 중복체크, 회원가입으로 로그인 연결, -->
+    &lt;!&ndash;2. 아이디 중복체크, 회원가입으로 로그인 연결, &ndash;&gt;
     <select id="getUserInfo" parameterType="String" resultType="Sign">
         select * from taehan.Sign where email = #{email}
     </select>
+    &lt;!&ndash;3. 권한 설정 insert&ndash;&gt;
+    <insert id="insertAuthority" parameterType="UserAuthority">
+      INSERT INTO USER_AUTHORITY(user_id,authority,created_date,modified_date)
+      VALUES(#{userId}, #{authority}, NOW(), NOW())
+   </insert>
 
 
 </mapper>
+-->

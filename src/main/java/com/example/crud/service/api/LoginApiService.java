@@ -2,7 +2,9 @@ package com.example.crud.service.api;
 
 import com.example.crud.domain.Sign;
 import com.example.crud.repository.SignRepository;
+import com.example.crud.repository.UserRepository;
 import com.example.crud.repository.api.LoginApiRepository;
+import com.example.crud.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,10 +12,7 @@ import org.springframework.stereotype.Service;
 public class LoginApiService {
 
     @Autowired
-    private LoginApiRepository loginApiRepository;
-
-    @Autowired
-    private SignRepository signRepository;
+    private UserRepository userRepository;
 
 //    // 1. 카카오로그인 가입시키기 insert
 //    public void joinUserByKakao(Sign sign){
@@ -32,7 +31,7 @@ public class LoginApiService {
 
     public Sign checkUserByKakao(Sign kakaoInfo){
 
-        Sign checkInfo =signRepository.getUserInfo(kakaoInfo.getEmail()); //getUserInfo 리턴타입이 Sign
+        Sign checkInfo =userRepository.getUserInfo(kakaoInfo.getEmail()); //getUserInfo 리턴타입이 Sign
 
         if(checkInfo == null){ //이메일이 없는 사람 //즉,가입한 사람이 없으면 카카오아이디와 이메일 가지고 회원가입시킴
 
@@ -42,7 +41,9 @@ public class LoginApiService {
 
             newUserInfo.setProfile(kakaoInfo.getProfile());
             newUserInfo.setBirthday(kakaoInfo.getBirthday());
-            loginApiRepository.joinUserByKakao(newUserInfo); //insert쿼리문 이용
+            userRepository.joinUserInfo(newUserInfo); //insert쿼리문 이용
+            userRepository.insertAuthority(newUserInfo);
+
             return newUserInfo;
 
         }else{
@@ -56,7 +57,7 @@ public class LoginApiService {
                 checkInfo.setProfile(kakaoInfo.getProfile());
                 checkInfo.setBirthday(kakaoInfo.getProfile());
 
-                loginApiRepository.updateUserByKakao(checkInfo);
+                userRepository.updateUserByKakao(checkInfo);
                 return checkInfo;
             }else {
                 // 카카오 아이디가 이미 존재하기 때문에 로그인만 진행

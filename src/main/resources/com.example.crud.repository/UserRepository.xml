@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.crud.repository.UserRepository">
+
+    <!--1. 회원가입 insert -->
+    <insert id="joinUserByKakao" parameterType="Sign" useGeneratedKeys="true" keyProperty="idx">
+        insert into taehan.Sign (idx, id, email, pass, address, birthday, kakaoId, profile)
+        values (#{idx}, #{id}, #{email}, #{pass}, #{address},  #{birthday}, #{kakaoId} , #{profile})
+    </insert>
+
+    <!--2. 이메일로 중복 확인-->
+    <select id="getUserInfo" parameterType="String" resultType="Sign">
+        select * from taehan.Sign where email = #{email}
+    </select>
+
+
+    <!--3. 이메일로 가입한 사람만 있는 경우 카카오아이디 업데이트-->
+    <update id="updateUserByKakao" parameterType="String" >
+        update taehan.Sign set kakaoId=#{kakaoId}, profile=#{profile} where email=#{email}
+    </update>
+
+    <!--4. 권한 설정 insert-->
+    <insert id="insertAuthority" parameterType="UserAuthority">
+      INSERT INTO USER_AUTHORITY(user_id,authority,created_date,modified_date)
+      VALUES(#{userId}, #{authority}, NOW(), NOW())
+   </insert>
+
+
+</mapper>
