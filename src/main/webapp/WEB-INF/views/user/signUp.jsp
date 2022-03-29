@@ -26,15 +26,10 @@
             text-align: center;
         }
 
-        /*.n-input {*/
-        /*    width: auto;*/
-        /*    !*text-align: center;*!*/
-        /*}*/
 
-        /*.n-form-set{*/
-        /*    text-align: center;*/
-        /*}*/
-
+        .n-member-area{
+            max-width: 380px;
+        }
     </style>
 </head>
 <body>

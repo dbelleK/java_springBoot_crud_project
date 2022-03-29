@@ -319,14 +319,16 @@
     </div>
 </div>
 
-</body>
+
 
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script type="text/javascript" src="/resources/js/kakaoLogin.js"></script>
 <script type="text/javascript" src="/resources/js/findPasssword.js"></script>
 
-
+</body>
 </html>
+
+
 
 
 
