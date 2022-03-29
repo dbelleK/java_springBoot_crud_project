@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
@@ -310,7 +311,9 @@
                 <div>
                     <button type="submit">회원가입</button>
                 </div>
-
+                <c:if test="${error}">
+                    <p style="color: red"><strong>아이디(email)</strong> 혹은 <strong>패스워드</strong>가 올바르지 않습니다.</p>
+                </c:if>
             </div>
         </section>
     </div>

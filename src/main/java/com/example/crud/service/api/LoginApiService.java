@@ -27,13 +27,6 @@ public class LoginApiService {
     private HttpServletRequest httpServletRequest;
 
 
-//    // 1. 카카오로그인 가입시키기 insert
-//    public void joinUserByKakao(Sign sign){
-//        loginApiRepository.joinUserByKakao(sign);
-//    }
-
-    // 2. 이메일로 가입한 사람과 카카오아이디로 가입한 사람이 같은지 아닌지 중복체크, select로 리턴
-
     //todo
     // 1) 가입한 사람이 있는지 체크
     // (이메일로 가입하고 카카오로그인으로 가입시킨사람을 연동시키기 위해서 따로 둘 수 없으니까)
@@ -53,13 +46,13 @@ public class LoginApiService {
 
             newUserInfo.setProfile(kakaoInfo.getProfile());
             newUserInfo.setBirthday(kakaoInfo.getBirthday());
-            userRepository.joinUserInfo(newUserInfo); //insert쿼리문 이용
+            userRepository.joinUserInfo(newUserInfo); //insert쿼리문 이용 //회원가입시킴
 
             //권한 삽입
             UserAuthority userAuthority = new UserAuthority();
             userAuthority.setUserId((long) newUserInfo.getIdx());
             userAuthority.setAuthority("ROLE_USER");
-            userRepository.insertAuthority(userAuthority);
+            userRepository.insertAuthority(userAuthority); //권한 회원가입 시킴
 
             // return newUserInfo;
             //로그인 시키기

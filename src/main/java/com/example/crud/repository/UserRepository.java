@@ -27,6 +27,5 @@ public interface UserRepository {
     @Select("SELECT * FROM taehan.USER_AUTHORITY where user_id = #{id}")
     List<UserAuthority> findAuthorityById(@Param("id") Long id);
 
-//    @Select("SELECT * FROM moca_client.USER_AUTHORITY where user_id = #{id}")
-//    List<UserAuthority> findAuthorityById(@Param("id") Long id);
+
 }

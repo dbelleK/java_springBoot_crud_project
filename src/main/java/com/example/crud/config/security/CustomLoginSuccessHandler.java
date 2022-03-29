@@ -46,6 +46,7 @@ public class CustomLoginSuccessHandler extends SavedRequestAwareAuthenticationSu
 
         RedirectUrlType intRedirectStrategy = decideRedirectStrategy(request, response);
 
+        //user : 세션 객체 , 로그인 유지해주는 것,  model.addAttribute("sessionUser",sessionUser); 해준것과 같다, user.~해주면 로그인이 되었는지 안되었는지 확인
         HttpSession session = request.getSession();
         session.setAttribute("user", ((SpringUser)authentication.getDetails()).getUser());
 

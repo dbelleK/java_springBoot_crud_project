@@ -22,22 +22,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private final SessionRegistry sessionRegistry;
 
     // SessionRegistry 클래스(기본)
-    //((세션: 일정시간동안 같은 사용자로부터 들어오는 일련의 요구를 하나로 보고
-    //그 상태를 일정하게 유지시키는 기술
-    //, 일정시간은 방문자가 웹 브라우저를 통해 웹 서버에 접속한 시점으로부터 웹 브라우저를 종료하여
-    //연결을 끝내는 시점
-    //, 즉 방문자가 웹 서버에 접속해 있는 상태를 하나의 단위로 보고 그것을 세션이라고 함))
-    //
+    //((세션: 일정시간동안 같은 사용자로부터 들어오는 일련의 요구를 하나로 보고 그 상태를 일정하게 유지시키는 기술
+    // 일정시간은 방문자가 웹 브라우저를 통해 웹 서버에 접속한 시점으로부터 웹 브라우저를 종료하여 연결을 끝내는 시점
+    // ,즉 방문자가 웹 서버에 접속해 있는 상태를 하나의 단위로 보고 그것을 세션이라고 함))
+
     //사용자의 인증정보와 그 인증정보가 가지고 있는 세션들
     //(한 사람의 사용자가 여러 세션을 생성하면서 들어올 수 있다
-    //브라우저를 달리한뒤 각각 로그인 하게 되면
-    //하나의 사용자가 2개의 서로 다른 세션 ID를 갖게 됨)
-    //
+    //브라우저를 달리한뒤 각각 로그인 하게 되면 하나의 사용자가 2개의 서로 다른 세션 ID를 갖게 됨)
     //하나의 브라우저로 여러개의 창을 열어도 같은 사용자 = 정보유지
 
 
-
-    //AuthenticationManagerBuilder를 통해 인증 객체를 만들 수 있도록 제공
+    //AuthenticationManagerBuilder(기본제공)를 통해 인증 객체를 만들 수 있도록 제공
     //로그인을 위해서는 SecurityConfig 클래스에 AuthenticationManagerBuilder를 주입해서 인증에 대한 처리
     //인증 매니저들은 인증/인가를 위한 UserDetailsService를 통해서 필요한 정보들을 가져옵니다.
     //UserDetails는 사용자의 정보 + 권한 정보들의 묶음
@@ -51,7 +46,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         //CustomLoginSuccessHandler : 로그인 성공 했을 때 실행되는 클래스이니까
-        //loginProcess,login 성공 시 코드니까 일단 이 링크를 무시한다
+        //loginPro,login 성공 시 코드니까 일단 이 링크를 무시한다
         CustomLoginSuccessHandler handler = new CustomLoginSuccessHandler();
         handler.addIgnoreUrl("/loginPro");
         handler.addIgnoreUrl("/login"); //.successHandler(handler)
@@ -73,7 +68,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/error").permitAll()
                 .antMatchers("/resources/**").permitAll()
 //                .antMatchers("/sign/**").permitAll()
-                .antMatchers("/signUpPro").permitAll()
+                .antMatchers("/signUpPro").permitAll() //path주소, form 태그 action
                 .antMatchers("/loginPro").permitAll()
 //                .antMatchers("/sign/**").hasAnyAuthority("ROLE_USER")
 //                .antMatchers("/cs/**").hasAnyAuthority("ROLE_USER") //.hasAuthority() or hasAnyAuthority() : 특정 권한을 가지는 사용자만 접근할 수 있다.

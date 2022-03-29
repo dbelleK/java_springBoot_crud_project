@@ -35,12 +35,25 @@ public class UserService implements UserDetailsService {
     private final PasswordEncoder passwordEncoder;
 
 
+//    // 2. 이메일 중복체크 (이메일 중복해보고 중복인지 아닌지 확인->회원가입시 같은 이메일 사용자가 있으면 안되니까)
+//    public boolean checkUserId(Sign sign) {
+//
+//        Sign checkUser = userRepository.getUserInfo(sign.getEmail());
+//
+//        // email이 null이면 즉, 같은 이메일이 없으면 true
+//        if (checkUser.getEmail() == null) {
+//            return true;
+//        } else {
+//            return false;
+//        }
+//    }
+
     /**
      * 회원 가입
      *
      * @param users
      */
-    public void joinUser(Sign users) {
+    public void joinUserInfo(Sign users) {
         //비밀번호 암호화
         users.setPass(passwordEncoder.encode(users.getPass()));
         //회원가입
@@ -57,10 +70,10 @@ public class UserService implements UserDetailsService {
         }
     }
 
-    public Sign getUserInfo(String email) {
-        Sign user = userRepository.getUserInfo(email);
-        return user;
-    }
+//    public Sign getUserInfo(String email) {
+//        Sign user = userRepository.getUserInfo(email);
+//        return user;
+//    }
 
     /**
      * 등록된 회원 정보를 출력

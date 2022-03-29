@@ -1,8 +1,12 @@
 package com.example.crud.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.security.Principal;
 
 @Controller
 @RequestMapping(value = "/")
@@ -18,14 +22,21 @@ public class IndexController {
     @RequestMapping(path = "signUp")
     public ModelAndView signUp() {
 
-        return new ModelAndView("sign/signUp");
+        return new ModelAndView("user/signUp");
     }
 
     //http://localhost8082/login
     @RequestMapping(path = "login")
-    public ModelAndView login() {
-
-        return new ModelAndView("sign/login");
+    public ModelAndView login(Principal principal, @RequestParam(value = "error", defaultValue = "false") Boolean error) {
+            if (error) {
+                return new ModelAndView("user/login").
+                        addObject("error", error);
+            } else {
+                if (!ObjectUtils.isEmpty(principal)) {
+                    return new ModelAndView("index");
+                }
+                return new ModelAndView("user/login");
+            }
     }
 
     //http://localhost8082/mypageMain

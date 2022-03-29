@@ -39,19 +39,20 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
     //Object getPrincipal(); - 주로 ID , Object getCredentials(); - 주로 비밀번호
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+
         String email = (String)authentication.getPrincipal();
         String password = (String)authentication.getCredentials();
         SpringUser springUser;
 
         //카카오 로그인
         if(password.equals("moca-web-kakao-login")){
-            springUser = (SpringUser)loginApiService.loadUserByKakaoUser(email);
+            springUser = (SpringUser)loginApiService.loadUserByKakaoUser(email); //카카오로그인시 권한부여된 로그인 연결
             this.withdrawalFilter(springUser);
             httpSession.setMaxInactiveInterval(SESSION_TIMEOUT_IN_SECONDS);
             httpSession.setAttribute("user",springUser.getUser());
         }else {
             //스프링 시큐리티 적용 폼 로그인
-            springUser = (SpringUser) userService.loadUserByUsername(email);
+            springUser = (SpringUser) userService.loadUserByUsername(email); //이메일로그인 시 권한부여 된 회원가입 연결
             this.withdrawalFilter(springUser);
             if (!passwordEncoder.matches(password, springUser.getPassword())) {
                 //암호화되서 온 password와 암호화인 springUser.getPassword()가 암호화되어 있지 않으면 실패 -> 회원가입 시킬 때 비번 암호화 해주어야한다.

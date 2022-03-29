@@ -1,4 +1,21 @@
+let token = $("input[name='_csrf']").val();
+let header = "X-CSRF-TOKEN";
 
+$(document).ajaxSend(function (e, xhr, options) {
+    xhr.setRequestHeader(header, token);
+});
+
+$.ajaxSetup({
+    error: function (xhr, status, err) {
+        if (xhr.status == 401) {
+            alert("잘못된 접근입니다. 로그인 페이지로 이동합니다.");
+            location.href = "/login";
+        } else if (xhr.status == 403) {
+            alert("잘못된 접근입니다. 로그인 페이지로 이동합니다.");
+            location.href = "/login";
+        }
+    }
+});
 
 Kakao.init('069ef3e06b0e566cf2942328aa13f94e'); //발급받은 키 중 javascript키를 사용해준다.
 
@@ -73,7 +90,7 @@ function responseSuccessLogin(email, kakaoId, profile, birthday) {
 
             console.log(response);
             // 로그인
-            location.href = "/loginBykakao?email="+response;
+            location.href = "/";
         },
         fail: function(error) {
 
