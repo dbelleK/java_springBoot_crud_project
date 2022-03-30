@@ -29,11 +29,17 @@
         background-repeat: no-repeat;
         background-size: cover;
     }
+
+    .hero-body{
+        background-image: linear-gradient(276deg,#a25aeb, #ffc1d8);
+    }
+
+
 </style>
 
 <section class="hero is-medium">
     <div class="hero-body has-text-centered">
-        <h1 class="title is-2">Thoughts, stories, and ideas.</h1>
+        <h1 class="title is-2">Welcome Dbelle Mall</h1>
         <div id="hero-input-group" class="field has-addons has-addons-centered">
             <div class="control">
                 <input class="input is-medium" type="text" placeholder="Search..." />
@@ -232,9 +238,6 @@
     </section>
 </div>
 
-<%--<script>--%>
-
-<%--</script>--%>
 
 
 <jsp:include page='../layout/footer.jsp'>

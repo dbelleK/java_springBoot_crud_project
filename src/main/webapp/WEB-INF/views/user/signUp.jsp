@@ -55,7 +55,7 @@
 
         <br>
         <br>
-        <h6>♥dbelle mall♥</h6>
+        <h6>♥Dbelle Mall♥</h6>
         <br>
         <br>
 
@@ -128,7 +128,7 @@
                 <div>
                     <input type="checkbox" class="n-check agree-item required-agree-item" id="useTermsCheckbox"
                            name="useTermsCheckbox">
-                    <label for="useTermsCheckbox">♥dbelle♥♥ShoppingMall♥ 이용약관(필수)</label>
+                    <label for="useTermsCheckbox">♥Dbelle Mall♥ 이용약관(필수)</label>
                     <button type="button" class="link" onclick="serviceAgreementPopBtnClickHandler()">약관보기</button>
                 </div>
 

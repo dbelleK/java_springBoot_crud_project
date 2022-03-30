@@ -1,23 +1,22 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<jsp:include page="../../layout/header.jsp">
+    <jsp:param name="pageName" value="header"/>
+</jsp:include>
 
-    <link type="text/css" rel="stylesheet" href="/resources/css/mypage/mypage1.css"/>
+<jsp:include page="../../layout/sidebar.jsp">
+    <jsp:param name="pageName" value="header"/>
+</jsp:include>
 
-</head>
-<body>
+<link type="text/css" rel="stylesheet" href="/resources/css/mypage/mypage1.css"/>
+<link type="text/css" rel="stylesheet" href="/resources/css/mypage/mypage2.css"/>
+<link type="text/css" rel="stylesheet" href="/resources/css/mypage/mypage3.css"/>
+
 <%--기본정보수정--%>
 <div class="mypage_cont">
 
     <div class="my_page">
-
-        <div class="mypage_zone_tit">
-            <h2>회원정보 변경</h2>
-        </div>
 
         <div class="join_base_wrap">
 
@@ -45,28 +44,24 @@
                                 <tbody>
 
 
-<%--                                <tr>--%>
-<%--                                    <th><span class="important">이름</span></th>--%>
-<%--                                    <td>--%>
-<%--                                        <input type="hidden" name="memNm" value="kkddy1206">김도연--%>
-<%--                                    </td>--%>
-<%--                                </tr>--%>
 
+                                <tr>
+                                    <th><span class="important">이메일</span></th>
+                                    <td>
+                                        <input type="hidden" name="email" >${user.email}
+                                    </td>
+                                </tr>
 
                                 <tr>
                                     <th><span class="important">아이디</span></th>
                                     <td>
-                                        <div class="member_warning">
-                                            <input type="text" name="id" maxlength="30">
-                                        </div>
+                                        <input type="text" name="id" maxlength="30" value="${user.id}"/>
                                     </td>
                                 </tr>
 
-                                <tr class="">
+                                <tr>
                                     <th><span class="important">비밀번호</span></th>
                                     <td class="member_password">
-
-                                        <!-- //layer_area -->
 
                                         <div id="memberNewPw" class="member_pw_change" >
                                             <dl class=" dn ">
@@ -77,6 +72,10 @@
                                                     </div>
                                                 </dd>
                                             </dl>
+                                            <c:if test="${error}">
+                                                <p style="color: #ff0000"><strong>현재비빌번호</strong>가 올바르지 않습니다.</p>
+                                            </c:if>
+
                                             <dl>
                                                 <dt>새 비밀번호</dt>
                                                 <dd>
@@ -85,6 +84,7 @@
                                                     </div>
                                                 </dd>
                                             </dl>
+
                                             <dl>
                                                 <dt>새 비밀번호 확인</dt>
                                                 <dd>
@@ -93,36 +93,36 @@
                                                     </div>
                                                 </dd>
                                             </dl>
+
                                         </div>
                                         <!-- //member_pw_change -->
                                     </td>
                                 </tr>
 
-
-
                                 <tr>
-                                    <th><span class="important">이메일</span></th>
+                                    <th><span class="important">생일(월일)</span></th>
                                     <td>
-<%--                                        <input type="hidden" name="memEmail" value="kkddy1206@naver.com">kkddy1206@naver.com--%>
-                                        <input type="hidden" name="email" >${user.email}
+                                        <div class="member_warning">
+                                            <input type="text" name="birthday" maxlength="30" value="${user.birthday}"/>
+                                        </div>
                                     </td>
                                 </tr>
+
 
                                     <th><span class="important">주소</span></th>
                                     <td class="member_address">
                                         <div class="address_postcode">
-                                            <input type="text" name="zonecode" readonly="readonly" value="28502">
+<%--                                            <input type="text" name="zonecode" readonly="readonly" value="28502">--%>
                                             <button type="button" id="btnPostcode" class="btn_post_search">우편번호검색
                                             </button>
                                             <input type="hidden" name="zipcode" value="-">
                                         </div>
                                         <div class="address_input">
                                             <div class="member_warning">
-                                                <input type="text" name="address" readonly="readonly"
-                                                       value="충청북도 청주시 청원구 상당로302번길 132-8">
+                                                <input type="text" name="address" value="${user.address}"/>
                                             </div>
                                             <div class="member_warning js_address_sub">
-                                                <input type="text" name="addressSub" value="러브하우스 101호">
+                                                <input type="text" name="addressSub"/>
                                             </div>
                                         </div>
                                     </td>
@@ -135,8 +135,8 @@
 
 
                     <div class="btn_center_box">
-                        <button type="button" class="btn_member_cancel">취소</button>
-                        <button type="button" class="btn_comfirm js_btn_join" value="정보수정">정보수정</button>
+                        <button type="submit" class="btn_member_cancel">취소</button>
+                        <button type="submit" class="btn_comfirm js_btn_join" value="정보수정">정보수정</button>
                     </div>
                     <!-- //btn_center_box -->
                 </form>
@@ -149,6 +149,16 @@
     <!-- //my_page -->
 
 </div>
+<script>
+    $(function () {
+        let error = "${error}";
+        // console.log(error);
+        if (error === "true"){
+            alert("현재 비밀번호를 정확히 입력해주세요");
+        }
+    });
+</script>
 
-</body>
-</html>
+<jsp:include page="../../layout/footer.jsp">
+    <jsp:param name="pageName" value="footer"/>
+</jsp:include>

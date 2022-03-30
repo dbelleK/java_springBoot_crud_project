@@ -51,7 +51,7 @@
 
         <br>
         <br>
-        <h6>♥dbelle mall♥</h6>
+        <h6>♥Dbelle Mall♥</h6>
         <br>
         <br>
 
@@ -252,6 +252,9 @@
                 <div>
                     <button type="submit">회원가입</button>
                 </div>
+                <c:if test="${error}">
+                    <p style="color: red"><strong>아이디(email)</strong> 혹은 <strong>패스워드</strong>가 올바르지 않습니다.</p>
+                </c:if>
             </div>
 
             <%--비회원구매하기-----------------------------------------------------------------------------------------------%>
@@ -305,15 +308,11 @@
                             data-gtm-category="non_member" data-gtm-action="client.click" data-gtm-label="비회원구매하기">구매하기
                     </button>
                 </div>
-
                 <br>
                 <br>
                 <div>
                     <button type="submit">회원가입</button>
                 </div>
-                <c:if test="${error}">
-                    <p style="color: red"><strong>아이디(email)</strong> 혹은 <strong>패스워드</strong>가 올바르지 않습니다.</p>
-                </c:if>
             </div>
         </section>
     </div>

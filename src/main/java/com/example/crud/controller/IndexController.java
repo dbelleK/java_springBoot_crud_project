@@ -19,9 +19,11 @@ public class IndexController {
 
     //http://localhost8082
     @RequestMapping(path = {""})
-    public ModelAndView index() {
+    public ModelAndView index(Principal principal, @RequestParam(value = "logout", defaultValue = "false") Boolean logout) {
         return new ModelAndView("index");
+
     }
+
 
     //http://localhost8082/signUp
     @RequestMapping(path = "signUp")
@@ -52,18 +54,24 @@ public class IndexController {
 
 
 
-        //http://localhost8082/mypageMain
-    @RequestMapping(path = "mypageInfo")
-    public ModelAndView mypageInfo() {
 
-        return new ModelAndView("mypage/mypageInfo");
+        //http://localhost8082/mypageInfo
+    @RequestMapping(path = "mypageInfo")
+    public ModelAndView mypageInfo(@RequestParam(value = "error", defaultValue = "false") Boolean error) {
+
+        if (error) { //error가 true일 때 : 로그인이 되지 않았을 때
+            return new ModelAndView("mypage/mypageInfo") // 다시 login페이지를 보여준다
+                    .addObject("error", error);
+        } else {
+            return new ModelAndView("mypage/mypageInfo"); //그렇지 않으면(로그인이 되지 않으면) login 페이지를 보여준다
+        }
     }
 
-    //http://localhost8082/mypageWhislist
-    @RequestMapping(path = "mypageWhislist")
-    public ModelAndView mypageWhislist() {
+    //http://localhost8082/mypageWishList
+    @RequestMapping(path = "mypageWishList")
+    public ModelAndView mypageWishList() {
 
-        return new ModelAndView("mypage/mypageWhislist");
+        return new ModelAndView("mypage/mypageWishList");
     }
 }
 

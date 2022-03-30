@@ -28,36 +28,88 @@
 
 <body>
 
-<nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="container">
-        <div class="navbar-brand">
-            <a class="navbar-item" href="https://bulma.io">
-                <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28" />
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+         <div class="navbar-brand">
+             <a class="navbar-item" href="https://bulma.io">
+                 <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
             </a>
 
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
-            </a>
-        </div>
+             </a>
+         </div>
 
-        <div id="navbarBasicExample" class="navbar-menu">
-            <div class="navbar-end">
-                <a class="navbar-item" href="/login"> LOGIN </a>
-                <a class="navbar-item" href="/signUp"> JOIN US</a>
-                <a class="navbar-item"> MY PAGE
-                   <select >
-                     <option value="회원정보">회원정보</option>
-                     <option value="위시리스트">위시리스트</option>
-                     <option value="주문내역조회">주문내역조회</option>
-                   </select>
-                </a>
-           </div>
-                <a class="navbar-item"> NOTICE</a>
-            </div>
-        </div>
+     <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+
+    <a class="navbar-item">
+    Home
+    </a>
+
+    <div class="navbar-item has-dropdown is-hoverable">
+    <a class="navbar-link">
+    Notice
+    </a>
+
+    <div class="navbar-dropdown">
+    <a class="navbar-item">
+    공지사항
+    </a>
+    <a class="navbar-item">
+    문의하기
+    </a>
+    <a class="navbar-item">
+    리뷰
+    </a>
+<%--    <hr class="navbar-divider">--%>
+    <a class="navbar-item">
+
+    </a>
     </div>
-</nav>
+    </div>
 
+    <div class="navbar-item has-dropdown is-hoverable">
+    <a class="navbar-link">
+    Mypage
+    </a>
+
+    <div class="navbar-dropdown">
+    <a class="navbar-item" href="mypageInfo">
+    회원정보수정
+    </a>
+    <a class="navbar-item">
+    주문내역조회
+    </a>
+    <a class="navbar-item" href="mypageWishList">
+    장바구니
+    </a>
+<%--    <hr class="navbar-divider">--%>
+    <a class="navbar-item">
+    Report an issue
+    </a>
+    </div>
+    </div>
+
+    </div>
+
+    <div class="navbar-end">
+    <div class="navbar-item">
+    <div class="buttons">
+    <a class="button is-primary" href="signUp">
+    <strong>Sign up</strong>
+    </a>
+    <a class="button is-light" href="login">
+    Log in
+    </a>
+    </a>
+    <a class="button is-light" href="logout">
+    Log out
+    </a>
+    </div>
+    </div>
+    </div>
+    </div>
+    </nav>
 

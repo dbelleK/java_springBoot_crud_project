@@ -18,7 +18,7 @@ public class Sign {
     private String profile;
 
     private String newPass;
-    private String newPasscheck;
+    private String newPassCheck;
 
 
 
