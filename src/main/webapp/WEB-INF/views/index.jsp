@@ -31,7 +31,7 @@
     }
 
     .hero-body{
-        background-image: linear-gradient(276deg,#a25aeb, #ffc1d8);
+        background-color : #f2d3d3;
     }
 
 
