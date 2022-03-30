@@ -22,8 +22,9 @@
         <div class="join_base_wrap">
 
             <div class="member_cont">
-                <form id="formJoin" name="formJoin" action="https://www.aimerfeel.kr/mypage/my_page_ps.php"
-                      method="post" novalidate="novalidate">
+                <form id="formJoin" name="formJoin" action="/mypageInfoPro" method="post" novalidate="novalidate">
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+
                     <input type="hidden" name="memNo" value="85305">
                     <input type="hidden" name="memberFl" value="personal">
                     <input type="hidden" name="dupeinfo"
@@ -44,19 +45,19 @@
                                 <tbody>
 
 
-                                <tr>
-                                    <th><span class="important">이름</span></th>
-                                    <td>
-                                        <input type="hidden" name="memNm" value="kkddy1206">김도연
-                                    </td>
-                                </tr>
+<%--                                <tr>--%>
+<%--                                    <th><span class="important">이름</span></th>--%>
+<%--                                    <td>--%>
+<%--                                        <input type="hidden" name="memNm" value="kkddy1206">김도연--%>
+<%--                                    </td>--%>
+<%--                                </tr>--%>
 
 
                                 <tr>
                                     <th><span class="important">아이디</span></th>
                                     <td>
                                         <div class="member_warning">
-                                            <input type="text" name="memId" data-pattern="gdEngKor" value="kkddy1206" maxlength="30">
+                                            <input type="text" name="id" maxlength="30">
                                         </div>
                                     </td>
                                 </tr>
@@ -72,7 +73,7 @@
                                                 <dt>현재 비밀번호</dt>
                                                 <dd>
                                                     <div class="member_warning">
-                                                        <input type="password" id="currentPassword" name="oldMemPw">
+                                                        <input type="pass" id="pass" name="pass">
                                                     </div>
                                                 </dd>
                                             </dl>
@@ -80,7 +81,7 @@
                                                 <dt>새 비밀번호</dt>
                                                 <dd>
                                                     <div class="member_warning">
-                                                        <input type="password" id="newPassword" name="memPw">
+                                                        <input type="password" id="newPass" name="newPass">
                                                     </div>
                                                 </dd>
                                             </dl>
@@ -88,7 +89,7 @@
                                                 <dt>새 비밀번호 확인</dt>
                                                 <dd>
                                                     <div class="member_warning">
-                                                        <input type="password" id="newPasswordCheck" name="memPwRe">
+                                                        <input type="password" id="newPassCheck" name="newPassCheck">
                                                     </div>
                                                 </dd>
                                             </dl>
@@ -102,7 +103,8 @@
                                 <tr>
                                     <th><span class="important">이메일</span></th>
                                     <td>
-                                        <input type="hidden" name="memEmail" value="kkddy1206@naver.com">kkddy1206@naver.com
+<%--                                        <input type="hidden" name="memEmail" value="kkddy1206@naver.com">kkddy1206@naver.com--%>
+                                        <input type="hidden" name="email" >${user.email}
                                     </td>
                                 </tr>
 

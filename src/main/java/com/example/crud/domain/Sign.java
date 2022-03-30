@@ -17,6 +17,9 @@ public class Sign {
     private String kakaoId;
     private String profile;
 
+    private String newPass;
+    private String newPasscheck;
+
 
 
 }
