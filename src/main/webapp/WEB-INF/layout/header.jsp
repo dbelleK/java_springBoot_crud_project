@@ -54,13 +54,13 @@
     </a>
 
     <div class="navbar-dropdown">
-    <a class="navbar-item" href="noticeIssues">
+    <a class="navbar-item" href="issues">
     공지사항
     </a>
-    <a class="navbar-item">
+    <a class="navbar-item" href="questions">
     문의하기
     </a>
-    <a class="navbar-item">
+    <a class="navbar-item" href="review">
     리뷰
     </a>
 <%--    <hr class="navbar-divider">--%>

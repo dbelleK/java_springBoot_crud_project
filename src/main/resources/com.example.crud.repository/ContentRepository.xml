@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.crud.repository.ContentRepository">
+
+    <!--1. 글 작성(제목,내용)(insert)-->
+    <insert id="writeUserInfo" parameterType="Content" useGeneratedKeys="true"  keyProperty="contentIdx">
+        insert into taehan.CONTENT (contentSubject, contentText, contentFile, contentDate)
+        values (#{contentSubject}, #{contentText}, #{contentFile}, NOW())
+    </insert>
+
+    <!--2. 글내용 표시(select)-->
+    <select id="appearNoticeInfo" resultType="Content">
+        select * from taehan.CONTENT
+    </select>
+
+</mapper>
