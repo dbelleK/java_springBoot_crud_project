@@ -70,6 +70,7 @@
     </div>
     </div>
 
+
     <div class="navbar-item has-dropdown is-hoverable">
     <a class="navbar-link">
     Mypage
@@ -85,9 +86,36 @@
     <a class="navbar-item" href="mypageWishList">
     장바구니
     </a>
+
+
+
+
 <%--    <hr class="navbar-divider">--%>
     <a class="navbar-item">
     Report an issue
+    </a>
+    </div>
+    </div>
+
+
+    <div class="navbar-item has-dropdown is-hoverable">
+    <a class="navbar-link">
+    Items
+    </a>
+
+    <div class="navbar-dropdown">
+    <a class="navbar-item" href="issues">
+    상의
+    </a>
+    <a class="navbar-item" href="questions">
+    하의
+    </a>
+    <a class="navbar-item" href="review">
+    아우터
+    </a>
+    <%--    <hr class="navbar-divider">--%>
+    <a class="navbar-item">
+
     </a>
     </div>
     </div>

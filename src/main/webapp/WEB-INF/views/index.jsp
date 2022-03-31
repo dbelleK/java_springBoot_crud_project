@@ -11,6 +11,9 @@
     <jsp:param name="pageName" value="header"/>
 </jsp:include>
 
+
+
+
 <%--    <p>Hello, Spring Boot App</p>--%>
 <%--    <c:if test="${empty user.email}"> &lt;%&ndash;CustomLoginSuccessHandler에서 세션 user로 잡음&ndash;%&gt;--%>
 <%--        <p>로그인된 계정이 없습니다.</p>--%>
@@ -34,6 +37,36 @@
         background-color : #f2d3d3;
     }
 
+    .hero.is-medium .hero-body {
+        padding: 20rem 0.9rem;
+    }
+
+    .button.is-primary {
+        background-color: #f65858;
+        border-color: transparent;
+        color: #fff;
+    }
+
+    .is-fullheight > .hero-body {
+        background-color : #fff;
+    }
+
+    .hero.is-fullheight {
+        min-height: 300px;
+    }
+
+    .columns:last-child {
+        margin-bottom: 18.25rem;
+    }
+
+    .featured{
+        margin-top: 100px;
+    }
+
+    .navbar{
+        margin-top: 30px;
+    }
+
 
 </style>
 
@@ -52,6 +85,9 @@
         </div>
     </div>
 </section>
+
+
+<section>
 <div class="container is-max-desktop">
     <section class="featured">
         <div class="level">
@@ -116,6 +152,34 @@
             </div>
         </div>
     </section>
+
+
+    <section class="hero is-white is-fullheight">
+        <div class="hero-body">
+            <div class="container">
+                <div class="columns  is-vcentered">
+                    <div data-aos="fade-left" class="column is-10-mobile is-offset-1-mobile is-10-tablet is-offset-1-tablet is-4-desktop is-offset-1-desktop is-4-widescreen is-offset-1-widescreen is-4-fullhd is-offset-1-fullhd aos-init aos-animate">
+                        <figure class="image is-square">
+                            <img src="https://bulmatemplates.github.io/bulma-templates/images/undraw_Camera_re_cnp4.svg">
+                        </figure>
+                    </div>
+                    <div data-aos="fade-down" class="column is-10-mobile is-offset-1-mobile is-10-tablet is-offset-1-tablet is-5-desktop is-offset-1-desktop is-5-widescreen is-offset-1-widescreen is-5-fullhd is-offset-1-fullhd aos-init aos-animate">
+                        <h1 class="titled title is-1 mb-6">
+                            Beautiful Clothes Make A Person
+                        </h1>
+                        <h2 class="subtitled subtitle">
+                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum cupiditate dolorum vitae dolores
+                            nesciunt totam magni quas.
+                        </h2>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
     <section class="categories">
         <div class="columns is-multiline">
             <div class="column is-6">
