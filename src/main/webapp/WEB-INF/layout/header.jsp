@@ -54,7 +54,7 @@
     </a>
 
     <div class="navbar-dropdown">
-    <a class="navbar-item">
+    <a class="navbar-item" href="noticeIssues">
     공지사항
     </a>
     <a class="navbar-item">

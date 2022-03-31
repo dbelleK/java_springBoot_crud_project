@@ -73,6 +73,13 @@ public class IndexController {
 
         return new ModelAndView("mypage/mypageWishList");
     }
+
+    //http://localhost8082/noticeIssues
+    @RequestMapping(path = "noticeIssues")
+    public ModelAndView noticeIssues() {
+
+        return new ModelAndView("notice/noticeIssues");
+    }
 }
 
 
