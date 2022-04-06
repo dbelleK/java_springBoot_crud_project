@@ -1,7 +1,8 @@
 package com.example.crud.controller;
 
 import com.example.crud.domain.Content;
-import com.example.crud.service.ContentService;
+import com.example.crud.domain.Reviews;
+import com.example.crud.service.NoticeService;
 import com.example.crud.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +23,7 @@ public class IndexController {
     private UserService userService;
 
     @Autowired
-    private ContentService contentService;
+    private NoticeService NoticeService;
 
     //http://localhost8082
     @RequestMapping(path = {""})
@@ -85,7 +86,7 @@ public class IndexController {
     @RequestMapping(path = "issues")
     public ModelAndView issues(Content content, Model model) {
         // 등록된 게시판 불러오기
-        List<Content> contents= contentService.appearNoticeInfo();
+        List<Content> contents= NoticeService.appearNoticeInfo();
         // 모델에 담기
         model.addAttribute("contents", contents);
 
@@ -94,22 +95,40 @@ public class IndexController {
 
     //http://localhost8082/noticeIssues
     @RequestMapping(path = "questions")
-    public ModelAndView questions() {
+    public ModelAndView questions(Content content, Model model) {
+        // 등록된 게시판 불러오기
+        List<Content> contents= NoticeService.appearNoticeInfo();
+        // 모델에 담기
+        model.addAttribute("contents", contents);
 
         return new ModelAndView("notice/questions");
     }
 
     //http://localhost8082/noticeIssues
     @RequestMapping(path = "review")
-    public ModelAndView review() {
+    public ModelAndView review(Model model) {
+        // 등록된 게시판 불러오기
+        List<Reviews> reviews= NoticeService.appearNoticeReviewsInfo();
+        // 모델에 담기
+        model.addAttribute("reviews", reviews);
 
         return new ModelAndView("notice/review");
     }
     //http://localhost8082/write
-    @RequestMapping(path = "write")
-    public ModelAndView write() {
+    @RequestMapping(path = "questions-write-form")
+    public ModelAndView questionsWriteForm(int contentIdx) {
 
-        return new ModelAndView("notice/write");
+        Content contents= NoticeService.getContentInfo(contentIdx);
+
+        return new ModelAndView("notice/questions_write_form")
+                .addObject("contentIdx","contentIdx");
+    }
+
+    //http://localhost8082/write
+    @RequestMapping(path = "review-write-form")
+    public ModelAndView reviewWriteForm() {
+
+        return new ModelAndView("notice/review_write_form");
     }
 }
 
