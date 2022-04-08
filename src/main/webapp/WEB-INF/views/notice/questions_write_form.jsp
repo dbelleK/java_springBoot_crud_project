@@ -174,7 +174,7 @@
 
             <jsp:include page="write_base.jsp">
                 <jsp:param name="pageName" value="write_base"/>
-            </jsp:include>
+            </jsp:include>5
 
         </form>
     </div>

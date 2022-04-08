@@ -6,10 +6,19 @@
     <div class="CommunityQuestionHead__header--text">
         <strong class="boardTitle">제목</strong>
         <div class="CommunityQuestionHead__title">
-
+        <c:if test="${empty commonNotice.commonNoticeSubject}">
             <input class="CommunityQuestionHead__title--text CommunityQuestionHead__title--noLink"
-                   id="contentSubject" name="CommonNoticeSubject" data-cy="threads-title" type="text"
+                   id="contentSubject" name="commonNoticeSubject" data-cy="threads-title" type="text"
                    placeholder="문의하실 주 제목을 적어주세요">
+        </c:if>
+        <c:if test="${not empty commonNotice.commonNoticeSubject}">
+            <input class="CommunityQuestionHead__title--text CommunityQuestionHead__title--noLink"
+                   id="contentSubject" name="commonNoticeSubject" data-cy="threads-title" type="text"
+                   placeholder="문의하실 주 제목을 적어주세요" value="${commonNotice.commonNoticeSubject}">
+        </c:if>
+<%--            <input class="CommunityQuestionHead__title--text CommunityQuestionHead__title--noLink"--%>
+<%--                   id="contentSubject" name="commonNoticeSubject" data-cy="threads-title" type="text"--%>
+<%--                   placeholder="문의하실 주 제목을 적어주세요" value="${commonNotice.commonNoticeSubject != null ? commonNotice.commonNoticeSubject:''}">--%>
         </div>
         <div class="CommunityQuestionHead__createdTime"></div>
         <%--                <div class="CommunityQuestionHead__watch CR__hidden--S">--%>

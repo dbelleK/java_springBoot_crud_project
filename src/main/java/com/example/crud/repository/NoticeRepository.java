@@ -23,6 +23,7 @@ public interface NoticeRepository {
     //글 표시(select)
     List<Reviews> appearNoticeReviewsInfo();
 
+    /////////////////////////////
     //contentIdx
     Content getContentInfo(int contentIdx);
 }

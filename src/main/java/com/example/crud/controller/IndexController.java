@@ -1,5 +1,6 @@
 package com.example.crud.controller;
 
+import com.example.crud.domain.CommonNotice;
 import com.example.crud.domain.Content;
 import com.example.crud.domain.Reviews;
 import com.example.crud.service.NoticeService;
@@ -23,7 +24,7 @@ public class IndexController {
     private UserService userService;
 
     @Autowired
-    private NoticeService NoticeService;
+    private NoticeService noticeService;
 
     //http://localhost8082
     @RequestMapping(path = {""})
@@ -82,11 +83,11 @@ public class IndexController {
         return new ModelAndView("mypage/mypageWishList");
     }
 
-    //http://localhost8082/noticeIssues
+  /*  //http://localhost8082/noticeIssues
     @RequestMapping(path = "issues")
     public ModelAndView issues(Content content, Model model) {
         // 등록된 게시판 불러오기
-        List<Content> contents= NoticeService.appearNoticeInfo();
+        List<Content> contents= noticeService.appearNoticeInfo();
         // 모델에 담기
         model.addAttribute("contents", contents);
 
@@ -97,7 +98,7 @@ public class IndexController {
     @RequestMapping(path = "questions")
     public ModelAndView questions(Content content, Model model) {
         // 등록된 게시판 불러오기
-        List<Content> contents= NoticeService.appearNoticeInfo();
+        List<Content> contents= noticeService.appearNoticeInfo();
         // 모델에 담기
         model.addAttribute("contents", contents);
 
@@ -108,7 +109,7 @@ public class IndexController {
     @RequestMapping(path = "review")
     public ModelAndView review(Model model) {
         // 등록된 게시판 불러오기
-        List<Reviews> reviews= NoticeService.appearNoticeReviewsInfo();
+        List<Reviews> reviews= noticeService.appearNoticeReviewsInfo();
         // 모델에 담기
         model.addAttribute("reviews", reviews);
 
@@ -118,18 +119,29 @@ public class IndexController {
     @RequestMapping(path = "questions-write-form")
     public ModelAndView questionsWriteForm(int contentIdx) {
 
-        Content contents= NoticeService.getContentInfo(contentIdx);
-
+        Content contents= noticeService.getContentInfo(contentIdx);
+        CommonNotice commonNotice = new CommonNotice();
+        if (contents != null){
+            commonNotice.setCommonNoticeSubject(contents.getContentSubject());
+            commonNotice.setCommonNoticeText(contents.getContentText());
+        }
         return new ModelAndView("notice/questions_write_form")
-                .addObject("contentIdx","contentIdx");
+                .addObject("commonNotice",commonNotice);
     }
 
     //http://localhost8082/write
     @RequestMapping(path = "review-write-form")
-    public ModelAndView reviewWriteForm() {
+    public ModelAndView reviewWriteForm(int reviewsIdx) {
 
-        return new ModelAndView("notice/review_write_form");
-    }
+        Content contents= noticeService.getContentInfo(reviewsIdx);
+        CommonNotice commonNotice = new CommonNotice();
+        if (contents != null){
+            commonNotice.setCommonNoticeSubject(contents.getContentSubject());
+            commonNotice.setCommonNoticeText(contents.getContentText());
+        }
+        return new ModelAndView("notice/review_write_form")
+                .addObject("commonNotice",commonNotice);
+    }*/
 }
 
 
