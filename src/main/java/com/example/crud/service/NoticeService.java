@@ -15,6 +15,7 @@ public class NoticeService {
 
     private final NoticeRepository noticeRepository;
 
+     //문의하기
      // 1. 글 작성(제목,내용)(insert)
     public void writeUserInfo(CommonNotice commonNotice){
 
@@ -34,6 +35,7 @@ public class NoticeService {
 
     //////////////////////////////////////////////////////////////////////////////////////////////
 
+    //리뷰하기
     // 1. 글 작성(제목,내용)(insert)
     public void reviewsUserInfo(CommonNotice commonNotice){
 
@@ -50,6 +52,8 @@ public class NoticeService {
         return noticeRepository.appearNoticeReviewsInfo();
     }
 
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //contentIdx
     public Content getContentInfo(int contentIdx) {

@@ -17,7 +17,7 @@
             </div>
 
             <div class="Header_buttonWrapper__qedG2">
-                <a href="questions-write-form" class="ButtonInteractive_container__NfRis ButtonInteractive_withIcon__ECQZi" style="padding: 1.2rem 2.7rem 0.8rem 2.2rem;">
+                <a href="questions-write-form-new" class="ButtonInteractive_container__NfRis ButtonInteractive_withIcon__ECQZi" style="padding: 1.2rem 2.7rem 0.8rem 2.2rem;">
                     <span class="Header_buttonText__zPcGR">질문하기</span>
                 </a>
             </div>

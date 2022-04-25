@@ -15,13 +15,9 @@
                 <p>
                 </p>
                 <h3>공지사항을 정독해주세요.</h3>
+                <h3>공지사항====>>관리자페이지에서 다루기</h3>
             </div>
-            <div class="Header_buttonWrapper__qedG2">
-                <a href="write" class="ButtonInteractive_container__NfRis ButtonInteractive_withIcon__ECQZi"
-                   style="padding: 1.2rem 2.7rem 0.8rem 2.2rem;">
-                    <span class="Header_buttonText__zPcGR">질문하기</span>
-                </a>
-            </div>
+
         </div>
     </div>
     <div class="community_tools__I9vJo">

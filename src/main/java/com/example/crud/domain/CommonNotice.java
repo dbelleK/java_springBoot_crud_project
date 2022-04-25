@@ -8,8 +8,11 @@ import org.springframework.web.multipart.MultipartFile;
 @Setter
 public class CommonNotice {
 
+    private int commonContentIdx;
+
     private String commonNoticeSubject; //글제목
     private String commonNoticeText; //글내용
+
     private String commonNoticeApply; //리뷰답변
 
     private MultipartFile commonNoticeUploadFile; //파일

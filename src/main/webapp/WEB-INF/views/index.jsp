@@ -168,8 +168,7 @@
                             Beautiful Clothes Make A Person
                         </h1>
                         <h2 class="subtitled subtitle">
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum cupiditate dolorum vitae dolores
-                            nesciunt totam magni quas.
+                            마스크는 패션이다. 자신에게 맞는 마스크 유형을 찾아드립니다.
                         </h2>
                     </div>
 

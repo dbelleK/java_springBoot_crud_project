@@ -71,6 +71,7 @@ public class NoticeController {
     }
 
     //http://localhost8082/write
+    //idx 연결
     @RequestMapping(path = "questions-write-form")
     public ModelAndView questionsWriteForm(int contentIdx) {
 
@@ -96,5 +97,27 @@ public class NoticeController {
         }
         return new ModelAndView("/notice/review_write_form")
                 .addObject("commonNotice",commonNotice);
+    }
+
+
+
+    @RequestMapping(path = "write-base")
+    public ModelAndView writeBase() {
+        return new ModelAndView("notice/write_base");
+    }
+
+
+    @RequestMapping(path = "questions-write-form-new")
+    public ModelAndView questionsWriteForm() {
+
+        return new ModelAndView("/notice/questions_write_form");
+
+    }
+
+    @RequestMapping(path = "review-write-form-new")
+    public ModelAndView reviewsWriteForm() {
+
+        return new ModelAndView("/notice/review_write_form");
+
     }
 }
