@@ -1,5 +1,6 @@
 package com.example.crud.repository;
 
+import com.example.crud.domain.CommonNotice;
 import com.example.crud.domain.Content;
 import com.example.crud.domain.Reviews;
 import org.springframework.stereotype.Repository;
@@ -16,6 +17,12 @@ public interface NoticeRepository {
     //글 표시(select)
     List<Content> appearNoticeInfo();
 
+    //수정하기
+    void updateQuestions(CommonNotice commonNotice);
+
+    //삭제하기
+    void deleteQuestions(int commonContentIdx);
+
     /////////리뷰하기//////////
     //글 작성(제목,내용)(insert)
     void reviewsUserInfo(Reviews reviews);
@@ -26,4 +33,6 @@ public interface NoticeRepository {
     /////////////////////////////
     //contentIdx
     Content getContentInfo(int contentIdx);
+
+
 }

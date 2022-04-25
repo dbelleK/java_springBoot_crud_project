@@ -33,6 +33,17 @@ public class NoticeService {
         return noticeRepository.appearNoticeInfo();
     }
 
+
+    //3. 수정하기
+    public void updateQuestions(CommonNotice commonNotice){
+        noticeRepository.updateQuestions(commonNotice);
+    }
+
+    //4. 삭제하기
+    public void deleteQuestions(int commonContentIdx){
+        noticeRepository.deleteQuestions(commonContentIdx);
+    }
+
     //////////////////////////////////////////////////////////////////////////////////////////////
 
     //리뷰하기
@@ -45,6 +56,7 @@ public class NoticeService {
 
         noticeRepository.reviewsUserInfo(reviews);
     }
+
 
 
     //2. 글내용 표시(select)

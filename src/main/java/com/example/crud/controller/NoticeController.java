@@ -7,6 +7,7 @@ import com.example.crud.service.NoticeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,12 +20,27 @@ public class NoticeController {
 
     private final NoticeService noticeService;
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //글 작성
     @PostMapping("/writePro")
     public String writePro(CommonNotice commonNotice){
 
-        //insert한 메소드
-        noticeService.writeUserInfo(commonNotice);
+        if(commonNotice.getCommonContentIdx() != 0){
+            // update
+            noticeService.updateQuestions(commonNotice);
 
+        }else {
+            // insert
+            noticeService.writeUserInfo(commonNotice);
+        }
+
+        return "redirect:/questions";
+    }
+
+    //삭제하기
+    @GetMapping("/deletePro")
+    public String deletePro(int commonContentIdx){
+        noticeService.deleteQuestions(commonContentIdx);
         return "redirect:/questions";
     }
 
@@ -37,6 +53,8 @@ public class NoticeController {
         return "redirect:/review";
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //쓴 글 내용 표시하기
     //http://localhost8082/noticeIssues
     @RequestMapping(path = "issues")
     public ModelAndView issues(Content content, Model model) {
@@ -70,14 +88,16 @@ public class NoticeController {
         return new ModelAndView("/notice/review");
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //idx연결 - idx로 쓰여진 글 누르면 그 해당글 보이기
     //http://localhost8082/write
-    //idx 연결
     @RequestMapping(path = "questions-write-form")
     public ModelAndView questionsWriteForm(int contentIdx) {
 
         Content contents= noticeService.getContentInfo(contentIdx);
         CommonNotice commonNotice = new CommonNotice();
         if (contents != null){
+            commonNotice.setCommonContentIdx(contents.getContentIdx());
             commonNotice.setCommonNoticeSubject(contents.getContentSubject());
             commonNotice.setCommonNoticeText(contents.getContentText());
         }
@@ -99,8 +119,8 @@ public class NoticeController {
                 .addObject("commonNotice",commonNotice);
     }
 
-
-
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //새로운 글 작성 뷰 보이기
     @RequestMapping(path = "write-base")
     public ModelAndView writeBase() {
         return new ModelAndView("notice/write_base");
@@ -120,4 +140,18 @@ public class NoticeController {
         return new ModelAndView("/notice/review_write_form");
 
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////////
+//    //수정하기
+//    @RequestMapping(path = "writePro")
+//    public ModelAndView updateQuestions(CommonNotice commonNotice) {
+//
+//        noticeService.updateQuestions(commonNotice);
+//        return new ModelAndView("/notice/questions");
+//
+//    }
+
+
+
+
 }

@@ -15,6 +15,16 @@
         select * from taehan.CONTENT
     </select>
 
+    <!--3. 수정하기-->
+    <update id="updateQuestions" parameterType="Content">
+        update taehan.CONTENT set contentSubject=#{commonNoticeSubject}, contentText=#{commonNoticeText}
+        where contentIdx=#{commonContentIdx}
+    </update>
+
+    <!--4. 삭제하기-->
+    <delete id="deleteQuestions" parameterType="int">
+        delete from taehan.CONTENT where contentIdx=#{commonContentIdx}
+    </delete>
 
     <!--리뷰-->
     <!--1. 글 작성(제목,내용)(insert)--><!--parameterType 객체-->

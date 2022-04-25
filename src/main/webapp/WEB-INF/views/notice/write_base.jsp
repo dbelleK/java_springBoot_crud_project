@@ -31,17 +31,19 @@
     <div class="CommunityEachBody__bodyWrapper question">
         <div class="CommunityEachBody__content question">
             <div class="Viewer_container__odwvV">
+<%--<c:forEach var='obj' items="${commonNotice}">--%>
                 <div>
                     <input type="hidden" name="_csrf" value="5e5f96c2-d91e-4f71-bb5a-a5704a783a07">
                     <div class="toastui-editor-contents" style="overflow-wrap: break-word;">
                         <div data-nodeid="1">
                             <strong class="boardContent">내용</strong>
                             <textarea class="boardContentWrite" id="contentText" name="commonNoticeText"
-                                      placeholder="문의하실 내용을 적어주세요"></textarea>
+                                      placeholder="문의하실 내용을 적어주세요">${commonNotice.commonNoticeText}</textarea>
 
                         </div>
                     </div>
                 </div>
+<%--</c:forEach>--%>
             </div>
         </div>
     </div>
@@ -71,6 +73,7 @@
 
                 <c:if test="${not empty commonNotice.commonContentIdx}">
                     <div class="bt_wrap1" style="float: left">
+                        <input type="hidden" name="commonContentIdx" value="${commonNotice.commonContentIdx}">
                         <button type="submit" class="ButtonInteractive_container__NfRis ButtonInteractive_withIcon__ECQZi"
                                 style="padding: 1.2rem 2.7rem 0.8rem 2.2rem;">
                             <span class="Header_buttonText__zPcGR">수정하기</span>
@@ -78,7 +81,7 @@
                     </div>
 
                     <div class="bt_wrap2">
-                     <a href="faq" class="ButtonInteractive_container__NfRis ButtonInteractive_withIcon__ECQZi"
+                     <a href="deletePro?commonContentIdx=${commonNotice.commonContentIdx}" class="ButtonInteractive_container__NfRis ButtonInteractive_withIcon__ECQZi"
                        style="padding: 1.2rem 2.7rem 0.8rem 2.2rem;">
                         <span class="Header_buttonText__zPcGR">삭제하기</span>
                     </a>
