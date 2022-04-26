@@ -12,7 +12,7 @@
 
     <!--2. 글내용 표시(select)-->
     <select id="appearNoticeInfo" resultType="Content">
-        select * from taehan.CONTENT
+        select * from taehan.CONTENT ORDER BY contentIdx DESC
     </select>
 
     <!--3. 수정하기-->
@@ -35,14 +35,30 @@
 
     <!--2. 글내용 표시(select)-->
     <select id="appearNoticeReviewsInfo" resultType="Reviews">
-        select * from taehan.REVIEWS
+        select * from taehan.REVIEWS ORDER BY reviewsIdx DESC
     </select>
+
+    <!--3. 수정하기-->
+    <update id="updateReview" parameterType="Reviews">
+        update taehan.REVIEWS set reviewsSubject=#{commonNoticeSubject}, reviewsText=#{commonNoticeText}
+        where reviewsIdx=#{commonContentIdx}
+    </update>
+
+    <!--4. 삭제하기-->
+    <delete id="deleteReview" parameterType="int">
+        delete from taehan.REVIEWS where reviewsIdx=#{commonContentIdx}
+    </delete>
+
 
     <!--contendIdx-->
     <select id="getContentInfo"  parameterType="int" resultType="Content">
         select * from taehan.CONTENT where contentIdx=#{contentIdx}
     </select>
 
+    <!--contendIdx-->
+    <select id="getReviewsInfo"  parameterType="int" resultType="Reviews">
+        select * from taehan.REVIEWS where reviewsIdx=#{reviewsIdx}
+    </select>
 
 
 </mapper>

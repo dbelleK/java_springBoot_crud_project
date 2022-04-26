@@ -45,7 +45,7 @@
                             <div class="ListItem_container__aU8Hn ListItem_regular__1_GMg ListItem_large__k18OQ">
                                 <div class="ListItem_contents__nde6Z">
                                     <a role="button" class="ListItem_title__QygUT" tabindex="0"
-                                       href="view?boardId=363&amp;userId=44">
+                                       href="review-write-form?reviewsIdx=${obj.reviewsIdx}">
                                                         <span class="ListItem_new__FQ3iR">
                                                             <i class="fa-regular fa-clipboard"></i>
                                                         </span>

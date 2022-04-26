@@ -58,10 +58,19 @@ public class NoticeService {
     }
 
 
-
     //2. 글내용 표시(select)
     public List<Reviews> appearNoticeReviewsInfo(){
         return noticeRepository.appearNoticeReviewsInfo();
+    }
+
+    //3. 수정하기
+    public void updateReview(CommonNotice commonNotice){
+        noticeRepository.updateReview(commonNotice);
+    }
+
+    //4. 삭제하기
+    public void deleteReview(int commonContentIdx){
+        noticeRepository.deleteReview(commonContentIdx);
     }
 
 
@@ -70,6 +79,11 @@ public class NoticeService {
     //contentIdx
     public Content getContentInfo(int contentIdx) {
         return noticeRepository.getContentInfo(contentIdx);
+    }
+
+    //contentIdx
+    public Reviews getReviewsInfo(int reviewsIdx) {
+        return noticeRepository.getReviewsInfo(reviewsIdx);
     }
 }
 

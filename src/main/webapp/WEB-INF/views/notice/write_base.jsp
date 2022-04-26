@@ -31,7 +31,6 @@
     <div class="CommunityEachBody__bodyWrapper question">
         <div class="CommunityEachBody__content question">
             <div class="Viewer_container__odwvV">
-<%--<c:forEach var='obj' items="${commonNotice}">--%>
                 <div>
                     <input type="hidden" name="_csrf" value="5e5f96c2-d91e-4f71-bb5a-a5704a783a07">
                     <div class="toastui-editor-contents" style="overflow-wrap: break-word;">
@@ -43,7 +42,6 @@
                         </div>
                     </div>
                 </div>
-<%--</c:forEach>--%>
             </div>
         </div>
     </div>
@@ -51,45 +49,46 @@
 
 
 
-    <div class="CommunityEachBody__commentContainer">
-        <div class="CommunityCommentTemplate">
-            <div class="button_write_back">
+<%--    <div class="CommunityEachBody__commentContainer">--%>
+<%--        <div class="CommunityCommentTemplate">--%>
+<%--            <div class="button_write_back">--%>
 
-                <c:if test="${empty commonNotice.commonContentIdx}">
-                  <div class="bt_wrap1" style="float: left">
-                    <button type="submit" class="ButtonInteractive_container__NfRis ButtonInteractive_withIcon__ECQZi"
-                            style="padding: 1.2rem 2.7rem 0.8rem 2.2rem;">
-                        <span class="Header_buttonText__zPcGR">작성완료</span>
-                    </button>
-                  </div>
+<%--                <c:if test="${empty commonNotice.commonContentIdx}">--%>
+<%--                  <div class="bt_wrap1" style="float: left">--%>
+<%--                    <button type="submit" class="ButtonInteractive_container__NfRis ButtonInteractive_withIcon__ECQZi"--%>
+<%--                            style="padding: 1.2rem 2.7rem 0.8rem 2.2rem;">--%>
+<%--                        <span class="Header_buttonText__zPcGR">작성완료</span>--%>
+<%--                    </button>--%>
+<%--                  </div>--%>
 
-                    <div class="bt_wrap2">
-                        <a href="faq" class="ButtonInteractive_container__NfRis ButtonInteractive_withIcon__ECQZi"
-                           style="padding: 1.2rem 2.7rem 0.8rem 2.2rem;">
-                            <span class="Header_buttonText__zPcGR">뒤로가기</span>
-                        </a>
-                    </div>
-                </c:if>
+<%--                    <div class="bt_wrap2">--%>
+<%--                        <a href="faq" class="ButtonInteractive_container__NfRis ButtonInteractive_withIcon__ECQZi"--%>
+<%--                           style="padding: 1.2rem 2.7rem 0.8rem 2.2rem;">--%>
+<%--                            <span class="Header_buttonText__zPcGR">뒤로가기</span>--%>
+<%--                        </a>--%>
+<%--                    </div>--%>
+<%--                </c:if>--%>
 
-                <c:if test="${not empty commonNotice.commonContentIdx}">
-                    <div class="bt_wrap1" style="float: left">
-                        <input type="hidden" name="commonContentIdx" value="${commonNotice.commonContentIdx}">
-                        <button type="submit" class="ButtonInteractive_container__NfRis ButtonInteractive_withIcon__ECQZi"
-                                style="padding: 1.2rem 2.7rem 0.8rem 2.2rem;">
-                            <span class="Header_buttonText__zPcGR">수정하기</span>
-                        </button>
-                    </div>
+<%--                <c:if test="${not empty commonNotice.commonContentIdx}">--%>
+<%--                    <div class="bt_wrap1" style="float: left">--%>
+<%--                        <input type="hidden" name="commonContentIdx" value="${commonNotice.commonContentIdx}">--%>
+<%--                        <button type="submit" class="ButtonInteractive_container__NfRis ButtonInteractive_withIcon__ECQZi"--%>
+<%--                                style="padding: 1.2rem 2.7rem 0.8rem 2.2rem;">--%>
+<%--                            <span class="Header_buttonText__zPcGR">수정하기</span>--%>
+<%--                        </button>--%>
+<%--                    </div>--%>
 
-                    <div class="bt_wrap2">
-                     <a href="deletePro?commonContentIdx=${commonNotice.commonContentIdx}" class="ButtonInteractive_container__NfRis ButtonInteractive_withIcon__ECQZi"
-                       style="padding: 1.2rem 2.7rem 0.8rem 2.2rem;">
-                        <span class="Header_buttonText__zPcGR">삭제하기</span>
-                    </a>
-                 </div>
-                </c:if>
+<%--                    <div class="bt_wrap2">--%>
+<%--                     <a href="deletePro?commonContentIdx=${commonNotice.commonContentIdx}" class="ButtonInteractive_container__NfRis ButtonInteractive_withIcon__ECQZi"--%>
+<%--                       style="padding: 1.2rem 2.7rem 0.8rem 2.2rem;">--%>
+<%--                        <span class="Header_buttonText__zPcGR">삭제하기</span>--%>
+<%--                    </a>--%>
 
-            </div>
-        </div>
-    </div>
+<%--                 </div>--%>
+<%--                </c:if>--%>
+
+<%--            </div>--%>
+<%--        </div>--%>
+<%--    </div>--%>
 
 

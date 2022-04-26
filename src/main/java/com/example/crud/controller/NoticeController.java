@@ -44,14 +44,28 @@ public class NoticeController {
         return "redirect:/questions";
     }
 
+
     @PostMapping("/reviewPro")
     public String reviewPro(CommonNotice commonNotice){
 
-        //insert한 메소드
-        noticeService.reviewsUserInfo(commonNotice);
+        if(commonNotice.getCommonContentIdx() != 0){
+            // update
+            noticeService.updateReview(commonNotice);
+
+        }else {
+            // insert
+            noticeService.reviewsUserInfo(commonNotice);
+        }
 
         return "redirect:/review";
     }
+
+    @GetMapping("deletePro2")
+    public String deletePro2(int commonContentIdx){
+        noticeService.deleteReview(commonContentIdx);
+        return "redirect:/review";
+    }
+
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //쓴 글 내용 표시하기
@@ -109,11 +123,12 @@ public class NoticeController {
     @RequestMapping(path = "review-write-form")
     public ModelAndView reviewWriteForm(int reviewsIdx) {
 
-        Content contents= noticeService.getContentInfo(reviewsIdx);
+        Reviews reviews= noticeService.getReviewsInfo(reviewsIdx);
         CommonNotice commonNotice = new CommonNotice();
-        if (contents != null){
-            commonNotice.setCommonNoticeSubject(contents.getContentSubject());
-            commonNotice.setCommonNoticeText(contents.getContentText());
+        if (reviews != null){
+            commonNotice.setCommonContentIdx(reviews.getReviewsIdx());
+            commonNotice.setCommonNoticeSubject(reviews.getReviewsSubject());
+            commonNotice.setCommonNoticeText(reviews.getReviewsText());
         }
         return new ModelAndView("/notice/review_write_form")
                 .addObject("commonNotice",commonNotice);
@@ -141,15 +156,6 @@ public class NoticeController {
 
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////
-//    //수정하기
-//    @RequestMapping(path = "writePro")
-//    public ModelAndView updateQuestions(CommonNotice commonNotice) {
-//
-//        noticeService.updateQuestions(commonNotice);
-//        return new ModelAndView("/notice/questions");
-//
-//    }
 
 
 
