@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="/resources/css/notice/notice1.css">
 
 <div class="community_content__qACrW">
+
     <div class="community_header__AdorW">
         <div class="Header_container__HGW4p">
             <div class="board_title">
@@ -25,6 +26,7 @@
 
         </div>
     </div>
+
     <div class="community_tools__I9vJo">
         <div class="Tools_container__8l_zD Tools_withFilter___gLvH">
             <div class="Tools_searchRow__TVWM5">
@@ -35,6 +37,8 @@
             </div>
         </div>
     </div>
+
+
 
     <div class="community_questions__XzDam">
         <div>
@@ -65,51 +69,65 @@
                         </div>
                     </div>
                 </c:forEach>
-
-
             </div>
         </div>
     </div>
+
+
 
     <div class="community_pagination__V9VQ1">
-
         <div class="Pagination_container__SunX5">
 
+            <c:choose>
+
+                <c:when test="${page.currentPage <=1}">
+                    <a href="#" class="page-link">이전</a>
+                </c:when>
+
+                <c:otherwise>
+
+                    <a href="notice/questions?page=${page.currentPage-1}" class="page-link">이전</a>
+
+<%--                    <a class="Pagination_FirstButton__First" href="faq?page=1">--%>
+<%--                        <span class="Pagination_buttonText__First">First</span>--%>
+<%--                    </a>--%>
+
+<%--                    <a class="Pagination_previousButton__Left" href="faq?page=${page.currentPage-1}">--%>
+<%--                        <i class="fa-solid fa-angle-left"></i>--%>
+<%--                    </a>--%>
+                </c:otherwise>
+            </c:choose>
 
             <div class="Pagination_pageWrapper__P796x">
-
-
-                <a href="/cs/faq?page=1" class="Pagination_page__T9uPQ Pagination_selected__AWwCP">1</a>
-
-
-                <a href="/cs/faq?page=2" class="Pagination_page__T9uPQ">2</a>
-
-
-                <a href="/cs/faq?page=3" class="Pagination_page__T9uPQ">3</a>
-
-
-                <a href="/cs/faq?page=4" class="Pagination_page__T9uPQ">4</a>
-
-
-                <a href="/cs/faq?page=5" class="Pagination_page__T9uPQ">5</a>
-
-
-                <a href="/cs/faq?page=6" class="Pagination_page__T9uPQ">6</a>
-
-
+                <c:forEach var='idx' begin="${ page.min }" end="${ page.max }">
+                    <c:if test="${idx==page.currentPage}">
+                        <a href="/notice/questions?page=${ idx }" class="Pagination_page__T9uPQ Pagination_selected__AWwCP">${ idx }</a>
+                    </c:if>
+                    <c:if test="${idx!=page.currentPage}">
+                        <a href="/notice/questions?page=${ idx }" class="Pagination_page__T9uPQ" >${ idx }</a>
+                    </c:if>
+                </c:forEach>
             </div>
 
-
-            <a class="Pagination_nextButton__Right" href="faq?page=2">
-                <i class="fa-solid fa-angle-right"></i>
-            </a>
-            <a class="Pagination_lastButton__hGkMG" href="faq?page=6"><span
-                    class="Pagination_buttonText__KfRX8">Last</span></a>
-
-
+            <c:choose>
+                <%--전체페이지 수 보다 현재페이지번호가 크거나 같으면 페이지 넘어가지 않게--%>
+                <c:when test="${page.currentPage >= page.pageCnt}">
+                    <a href="#" class="page-link">다음</a>
+                </c:when>
+                <c:otherwise>
+                    <a class="Pagination_nextButton__Right" href="/notice/questions?page=${page.currentPage+1}">
+                        <i class="fa-solid fa-angle-right"></i>
+                    </a>
+                    <a class="Pagination_lastButton__hGkMG" href="/notice/questions?page=${page.pageCnt}"><span
+                            class="Pagination_buttonText__KfRX8">Last</span></a>
+                </c:otherwise>
+            </c:choose>
         </div>
+
     </div>
 </div>
+
+
 
 
 <jsp:include page="../../layout/footer.jsp">

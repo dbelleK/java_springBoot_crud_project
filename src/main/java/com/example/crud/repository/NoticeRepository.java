@@ -3,6 +3,7 @@ package com.example.crud.repository;
 import com.example.crud.domain.CommonNotice;
 import com.example.crud.domain.Content;
 import com.example.crud.domain.Reviews;
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -16,7 +17,7 @@ public interface NoticeRepository {
     void writeUserInfo(Content content);
 
     //글 표시(select)
-    List<Content> appearNoticeInfo();
+    List<Content> appearNoticeInfo(RowBounds rowBounds);
 
     //수정하기
     void updateQuestions(CommonNotice commonNotice);
@@ -39,12 +40,17 @@ public interface NoticeRepository {
     void deleteReview(int commonContentIdx);
 
 
-    /////////////////////////////
+    ///////////////////////////////////////////////////////////
     //contentIdx
     Content getContentInfo(int contentIdx);
 
     //reviewsIdx
     Reviews getReviewsInfo(int reviewsIdx);
+
+    /////////--------------페이징처리--------------//////////
+    //페이지 수
+    public int getPageCount();
+
 
 
 }

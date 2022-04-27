@@ -60,5 +60,12 @@
         select * from taehan.REVIEWS where reviewsIdx=#{reviewsIdx}
     </select>
 
+    <!--페이지 수-->
+    <select id="getPageCount" resultType="int">
+        select count(contentIdx) from taehan.CONTENT
+    </select>
+
+
+
 
 </mapper>
