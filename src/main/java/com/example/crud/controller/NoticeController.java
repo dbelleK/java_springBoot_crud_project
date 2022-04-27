@@ -79,14 +79,14 @@ public class NoticeController {
     //문의하기
     //http://localhost8082/questions
     @RequestMapping(path = "questions")
-    public ModelAndView questions(Content content, Model model, @RequestParam(defaultValue = "1") int page) {
+    public ModelAndView questions(Model model, @RequestParam(defaultValue = "1") int pages) {
         // 등록된 게시판 불러오기
-        List<Content> contents= noticeService.appearNoticeInfo(page);
+        List<Content> contents= noticeService.appearNoticeInfo(pages);
         // 모델에 담기
         model.addAttribute("contents", contents);
 
         //페이징처리
-        Page pageCount = noticeService.getPageCount(page);
+        Page pageCount = noticeService.getPageCount(pages);
         //모델에 담기
         model.addAttribute("pageCount",pageCount);
 

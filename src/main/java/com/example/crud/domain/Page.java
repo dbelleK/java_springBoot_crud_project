@@ -36,6 +36,13 @@ public class Page {
 
     //-----------------------------------
 
+    public Page(){
+
+    }
+    public Page(String a){
+
+    }
+
     // contentCnt : 전체글 개수, currentPage : 현재 페이지 번호, contentPageCnt : 페이지당 글의 개수, paginationCnt : 페이지 버튼의 개수
     public Page(int contentCnt, int currentPage, int contentPageCnt, int paginationCnt){
 

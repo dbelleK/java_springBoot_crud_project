@@ -80,13 +80,12 @@
 
             <c:choose>
 
-                <c:when test="${page.currentPage <=1}">
+                <c:when test="${pageCount.currentPage <=1}">
                     <a href="#" class="page-link">이전</a>
                 </c:when>
 
                 <c:otherwise>
-
-                    <a href="notice/questions?page=${page.currentPage-1}" class="page-link">이전</a>
+                    <a href="questions?pages=${pageCount.currentPage-1}" class="page-link">이전</a>
 
 <%--                    <a class="Pagination_FirstButton__First" href="faq?page=1">--%>
 <%--                        <span class="Pagination_buttonText__First">First</span>--%>
@@ -99,27 +98,39 @@
             </c:choose>
 
             <div class="Pagination_pageWrapper__P796x">
-                <c:forEach var='idx' begin="${ page.min }" end="${ page.max }">
-                    <c:if test="${idx==page.currentPage}">
-                        <a href="/notice/questions?page=${ idx }" class="Pagination_page__T9uPQ Pagination_selected__AWwCP">${ idx }</a>
+                <c:forEach var='idx' begin="${ pageCount.min }" end="${ pageCount.max }">
+                    <c:if test="${idx==pageCount.currentPage}">
+                        <%--최소값에서 최대값까지 돌때 idx가 현재페이지와 같으면 보라색--%>
+                        <a href="questions?pages=${idx}" class="Pagination_page__T9uPQ Pagination_selected__AWwCP">${ idx }</a>
+
+                           <%--매개변수 page밖에 안넘겼으니 pageCount연결해주면 안되고 page만연결--%>
+<%--                        <a href="questions?pageCount=${ pageCount }&page=${idx}" class="Pagination_page__T9uPQ Pagination_selected__AWwCP">${ idx }</a>--%>
                     </c:if>
-                    <c:if test="${idx!=page.currentPage}">
-                        <a href="/notice/questions?page=${ idx }" class="Pagination_page__T9uPQ" >${ idx }</a>
+                    <c:if test="${idx!=pageCount.currentPage}">
+                         <%--최소값에서 최대값까지 돌때 idx가 현재페이지와 다르면 무색--%>-
+                        <a href="questions?pages=${idx}" class="Pagination_page__T9uPQ" >${ idx }</a>
+
+<%--                        <a href="questions?pageCount=${ pageCount }&page=${idx}" class="Pagination_page__T9uPQ" >${ idx }</a>--%>
                     </c:if>
                 </c:forEach>
             </div>
 
             <c:choose>
                 <%--전체페이지 수 보다 현재페이지번호가 크거나 같으면 페이지 넘어가지 않게--%>
-                <c:when test="${page.currentPage >= page.pageCnt}">
+                <c:when test="${pageCount.currentPage >= pageCount.pageCnt}">
                     <a href="#" class="page-link">다음</a>
                 </c:when>
                 <c:otherwise>
-                    <a class="Pagination_nextButton__Right" href="/notice/questions?page=${page.currentPage+1}">
-                        <i class="fa-solid fa-angle-right"></i>
-                    </a>
-                    <a class="Pagination_lastButton__hGkMG" href="/notice/questions?page=${page.pageCnt}"><span
-                            class="Pagination_buttonText__KfRX8">Last</span></a>
+                    <a href="questions?pages=${pageCount.currentPage+1}" class="page-link">다음</a>
+
+<%--                    <a class="Pagination_nextButton__Right" href="questions?pageCount=${pageCount.currentPage+1}">다음--%>
+<%--                        <i class="fa-solid fa-angle-right"></i>--%>
+<%--                    </a>--%>
+
+<%--                    <a class="Pagination_lastButton__hGkMG" href="questions?pageCount=${pageCount.pageCnt}">--%>
+<%--                        <span class="Pagination_buttonText__KfRX8">Last</span>--%>
+<%--                    </a>--%>
+
                 </c:otherwise>
             </c:choose>
         </div>
