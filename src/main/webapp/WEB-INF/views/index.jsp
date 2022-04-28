@@ -181,65 +181,63 @@
 
     <section class="categories">
         <div class="columns is-multiline">
+
             <div class="column is-6">
                 <div class="category">
                     <h1 class="title is-5">
                         Billing & Accounts <span>5 articles</span>
                     </h1>
                     <hr />
+
                     <ul>
-                        <li>
-                            <i class="fas fa-caret-right fa-xs icon-padding-right" /></i>
-                            General Billing Overview
-                        </li>
-                        <li>
-                            <i class="fas fa-caret-right fa-xs icon-padding-right" /></i>
-                            Changing the Account Owner
-                        </li>
-                        <li>
-                            <i class="fas fa-caret-right fa-xs icon-padding-right" /></i>
-                            Downloading/Printing Your Invoices
-                        </li>
-                        <li>
-                            <i class="fas fa-caret-right fa-xs icon-padding-right" /></i>
-                            Downloading/Printing Your Invoices
-                        </li>
-                        <li>
-                            <i class="fas fa-caret-right fa-xs icon-padding-right" /></i>
-                            What to Do When Your Card is Declined
-                        </li>
+                        <c:forEach var='obj' items="${contents }">
+                            <li>
+                                <a href='questions-write-form?contentIdx=${obj.contentIdx}&page='>${obj.contentSubject }</a>
+<%--                                <a href='questions-write-form?contentIdx=${obj.contentIdx}'>${obj.contentSubject }</a>--%>
+                            </li>
+                        </c:forEach>
                     </ul>
+
                     <h3 class="category-more">View All <i class="far fa-arrow-right icon-padding-left"></i></h3>
                 </div>
             </div>
+
             <div class="column is-6">
                 <div class="category">
                     <h1 class="title is-5">
                         FAQs <span>7 articles</span>
                     </h1>
                     <hr />
+
                     <ul>
-                        <li>
-                            <i class="fas fa-caret-right fa-xs icon-padding-right" /></i>
-                            Why Isn't My Custom Profile Data Showing on My Tickets?
-                        </li>
-                        <li>
-                            <i class="fas fa-caret-right fa-xs icon-padding-right" /></i>
-                            Why Won't My Gmail SMTP Settings Work?
-                        </li>
-                        <li>
-                            <i class="fas fa-caret-right fa-xs icon-padding-right" /></i>
-                            Is There a Customer Portal My Users Can Log in To?
-                        </li>
-                        <li>
-                            <i class="fas fa-caret-right fa-xs icon-padding-right" /></i>
-                            How Do I Export My Contacts, Tickets, Reports?
-                        </li>
-                        <li>
-                            <i class="fas fa-caret-right fa-xs icon-padding-right" /></i>
-                            How Do I Search for a Number?
-                        </li>
+                        <c:forEach var='obj' items="${reviews }">
+                            <li>
+<%--                                <a href='review-write-form?reviewsIdx=${obj.reviewsIdx}&pageinfos=${obj.currentPage}'>${obj.reviewsSubject }</a>--%>
+                            </li>
+                        </c:forEach>
                     </ul>
+<%--                    <ul>--%>
+<%--                        <li>--%>
+<%--                            <i class="fas fa-caret-right fa-xs icon-padding-right" /></i>--%>
+<%--                            Why Isn't My Custom Profile Data Showing on My Tickets?--%>
+<%--                        </li>--%>
+<%--                        <li>--%>
+<%--                            <i class="fas fa-caret-right fa-xs icon-padding-right" /></i>--%>
+<%--                            Why Won't My Gmail SMTP Settings Work?--%>
+<%--                        </li>--%>
+<%--                        <li>--%>
+<%--                            <i class="fas fa-caret-right fa-xs icon-padding-right" /></i>--%>
+<%--                            Is There a Customer Portal My Users Can Log in To?--%>
+<%--                        </li>--%>
+<%--                        <li>--%>
+<%--                            <i class="fas fa-caret-right fa-xs icon-padding-right" /></i>--%>
+<%--                            How Do I Export My Contacts, Tickets, Reports?--%>
+<%--                        </li>--%>
+<%--                        <li>--%>
+<%--                            <i class="fas fa-caret-right fa-xs icon-padding-right" /></i>--%>
+<%--                            How Do I Search for a Number?--%>
+<%--                        </li>--%>
+<%--                    </ul>--%>
                     <h3 class="category-more">View All <i class="far fa-arrow-right icon-padding-left"></i></h3>
                 </div>
             </div>

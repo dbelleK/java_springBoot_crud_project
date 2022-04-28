@@ -1,8 +1,7 @@
 package com.example.crud.controller;
 
-import com.example.crud.domain.CommonNotice;
-import com.example.crud.domain.Content;
-import com.example.crud.domain.Reviews;
+import com.example.crud.domain.*;
+import com.example.crud.repository.NoticeRepository;
 import com.example.crud.service.NoticeService;
 import com.example.crud.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -26,12 +26,31 @@ public class IndexController {
     @Autowired
     private NoticeService noticeService;
 
+    @Autowired
+    private NoticeRepository noticeRepository;
+
     //http://localhost8082
     @RequestMapping(path = {""})
+//    public ModelAndView index(Principal principal, @RequestParam(value = "logout", defaultValue = "false") Boolean logout ,Page page, PageInfo pageInfos) {
     public ModelAndView index(Principal principal, @RequestParam(value = "logout", defaultValue = "false") Boolean logout) {
-        return new ModelAndView("index");
+
+
+        //문의하기
+        /*page:1 -> page가 1페이지인것 출력, page:2 -> page가 2페이지인것*/
+        List<Content> contents = noticeService.appearNoticeInfo(2);
+
+        //리뷰하기
+        PageInfo pageInfo = new PageInfo(1, 7);
+        pageInfo.setItemCountTatal(noticeRepository.getPageCountReview());
+
+        List<Reviews> reviews = noticeService.appearNoticeReviewsInfo(pageInfo);
+
+        return new ModelAndView("index")
+                .addObject("contents",contents)
+                .addObject("reviews",reviews);
 
     }
+
 
 
     //http://localhost8082/signUp
