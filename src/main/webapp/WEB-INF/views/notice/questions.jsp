@@ -95,6 +95,7 @@
 <%--                        <i class="fa-solid fa-angle-left"></i>--%>
 <%--                    </a>--%>
                 </c:otherwise>
+
             </c:choose>
 
             <div class="Pagination_pageWrapper__P796x">

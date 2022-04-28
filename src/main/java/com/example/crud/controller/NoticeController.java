@@ -1,9 +1,7 @@
 package com.example.crud.controller;
 
-import com.example.crud.domain.CommonNotice;
-import com.example.crud.domain.Content;
-import com.example.crud.domain.Page;
-import com.example.crud.domain.Reviews;
+import com.example.crud.domain.*;
+import com.example.crud.repository.NoticeRepository;
 import com.example.crud.service.NoticeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -21,6 +19,9 @@ import java.util.List;
 public class NoticeController {
 
     private final NoticeService noticeService;
+    private final NoticeRepository noticeRepository;
+
+    public static final int PAGE_SIZE = 5;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //문의하기
@@ -96,10 +97,16 @@ public class NoticeController {
     //리뷰하기
     //http://localhost8082/review
     @RequestMapping(path = "review")
-    public ModelAndView review(Model model) {
+    public ModelAndView review(@RequestParam(defaultValue = "1") int page, Model model) {
         // 등록된 게시판 불러오기
-        List<Reviews> reviews= noticeService.appearNoticeReviewsInfo();
         // 모델에 담기
+
+        //페이징 처리
+        PageInfo pageInfo = new PageInfo(page, PAGE_SIZE);
+        pageInfo.setItemCountTatal(noticeRepository.getPageCountReview());
+        List<Reviews> reviews= noticeService.appearNoticeReviewsInfo(pageInfo);
+        //모델에 담기
+        model.addAttribute("pageInfo",pageInfo);
         model.addAttribute("reviews", reviews);
 
         return new ModelAndView("/notice/review");

@@ -1,9 +1,6 @@
 package com.example.crud.service;
 
-import com.example.crud.domain.CommonNotice;
-import com.example.crud.domain.Content;
-import com.example.crud.domain.Page;
-import com.example.crud.domain.Reviews;
+import com.example.crud.domain.*;
 import com.example.crud.repository.NoticeRepository;
 import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.session.RowBounds;
@@ -69,8 +66,8 @@ public class NoticeService {
     }
 
     //2. 글내용 표시(select)
-    public List<Reviews> appearNoticeReviewsInfo(){
-        return noticeRepository.appearNoticeReviewsInfo();
+    public List<Reviews> appearNoticeReviewsInfo(PageInfo pageInfo){
+        return noticeRepository.appearNoticeReviewsInfo(pageInfo);
     }
 
     //3. 수정하기

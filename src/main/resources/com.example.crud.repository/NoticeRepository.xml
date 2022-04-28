@@ -35,7 +35,9 @@
 
     <!--2. 글내용 표시(select)-->
     <select id="appearNoticeReviewsInfo" resultType="Reviews">
-        select * from taehan.REVIEWS ORDER BY reviewsIdx DESC
+        select * from taehan.REVIEWS
+         ORDER BY reviewsIdx DESC
+            LIMIT #{pager.start}, #{pager.itemCountPerPage}
     </select>
 
     <!--3. 수정하기-->
@@ -60,12 +62,15 @@
         select * from taehan.REVIEWS where reviewsIdx=#{reviewsIdx}
     </select>
 
-    <!--페이지 수-->
+    <!--페이지 수(문의)-->
     <select id="getPageCount" resultType="int">
         select count(contentIdx) from taehan.CONTENT
     </select>
 
-
+    <!--페이지 수(리뷰)-->
+    <select id="getPageCountReview" resultType="int">
+        select count(reviewsIdx) from taehan.REVIEWS
+    </select>
 
 
 </mapper>

@@ -2,7 +2,9 @@ package com.example.crud.repository;
 
 import com.example.crud.domain.CommonNotice;
 import com.example.crud.domain.Content;
+import com.example.crud.domain.PageInfo;
 import com.example.crud.domain.Reviews;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Repository;
 
@@ -31,7 +33,7 @@ public interface NoticeRepository {
     void reviewsUserInfo(Reviews reviews);
 
     //글 표시(select)
-    List<Reviews> appearNoticeReviewsInfo();
+    List<Reviews> appearNoticeReviewsInfo(@Param("pager") PageInfo pageInfo);
 
     //수정하기
     void updateReview(CommonNotice commonNotice);
@@ -48,8 +50,13 @@ public interface NoticeRepository {
     Reviews getReviewsInfo(int reviewsIdx);
 
     /////////--------------페이징처리--------------//////////
+
+    //문의하기
     //페이지 수
     public int getPageCount();
+
+    //리뷰하기
+    int getPageCountReview();
 
 
 

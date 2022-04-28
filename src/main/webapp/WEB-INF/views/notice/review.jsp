@@ -71,46 +71,69 @@
         </div>
     </div>
 
-    <div class="community_pagination__V9VQ1">
-
-        <div class="Pagination_container__SunX5">
 
 
-            <div class="Pagination_pageWrapper__P796x">
+    <div class="pager-wrap">
+        <ul class="pager">
+            <%--화면에 보여지는 페이지의 첫번째 인덱스 > 한 화면에 보여줄 페이지의 수--%>
+            <%--1,2,3,4,5 -> 첫번째 인덱스 : 1, 한 화면에 보여줄 페이지의 수 : 5 ///
+                6,7,8,9,10-> 첫번째 인덱스 : 6, 한 화면에 보여줄 페이지의 수 : 5 ///  위 식 성립하므로 첫번째 인덱스 6이 나타날 때 부터 해당 버튼 나타남 --%>
+            <c:if test="${pageInfo.startPageIndex > pageInfo.blockPage}">
+                <li>
+                    <%--화면에 보여지는 페이지의 첫번째 인덱스 - 한 화면에 보여줄 페이지의 수--%>
+                    <a href="javascript:goPage(${pageInfo.startPageIndex - pageInfo.blockPage});"> <%--6-5=1  url : review?page=1 // 11-5=6 url : review?page=6--%>
+                        <i class="fa fa-angle-left" aria-hidden="true"></i> <%--버튼--%>
+                    </a>
+                </li>
+            </c:if>
 
 
-                <a href="/cs/faq?page=1" class="Pagination_page__T9uPQ Pagination_selected__AWwCP">1</a>
+            <c:forEach begin="${pageInfo.startPageIndex}"
+                       end="${pageInfo.endPageIndex}"
+                       var="index">
+                <li
+                    <%--버튼유무--%>
+                    <c:if test="${pageInfo.currentPage == index}">
+                        class="active"
+                    </c:if>
+                >
+                    <%--인덱스 번호 출력,연결--%>
+                    <c:choose>
+                        <c:when test="${pageInfo.currentPage == index}">
+                            <strong>${index}</strong>
+                        </c:when>
+                        <c:otherwise>
+                            <a href="javascript:goPage(${index});">${index}</a>
+                        </c:otherwise>
+                    </c:choose>
+                </li>
+            </c:forEach>
 
-
-                <a href="/cs/faq?page=2" class="Pagination_page__T9uPQ">2</a>
-
-
-                <a href="/cs/faq?page=3" class="Pagination_page__T9uPQ">3</a>
-
-
-                <a href="/cs/faq?page=4" class="Pagination_page__T9uPQ">4</a>
-
-
-                <a href="/cs/faq?page=5" class="Pagination_page__T9uPQ">5</a>
-
-
-                <a href="/cs/faq?page=6" class="Pagination_page__T9uPQ">6</a>
-
-
-            </div>
-
-
-            <a class="Pagination_nextButton__Right" href="faq?page=2">
-                <i class="fa-solid fa-angle-right"></i>
-            </a>
-            <a class="Pagination_lastButton__hGkMG" href="faq?page=6"><span
-                    class="Pagination_buttonText__KfRX8">Last</span></a>
-
-
-        </div>
+            <%--현재 보여지는 페이지의 마지막 인덱스 < 페이지 전체 갯수 --%>
+                <%--1,2,3,4,5 -> 마지막 인덱스 : 5 / 6,7,8,9,10-> 페이지 전체 갯수 : 10 //// 위 식 성립하므로 마지막인덱스가 5->6으로 갈 때 해당 버튼 나타남 --%>
+            <c:if test="${pageInfo.endPageIndex < pageInfo.pageTotal}">
+                <li>
+                    <a href="javascript:goPage(${pageInfo.endPageIndex + 1});"> <%--5+1=6 url : review?page=6 /// 10+1=11 url : review?page=11 --%>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i> <%--버튼--%>
+                    </a>
+                </li>
+            </c:if>
+        </ul>
     </div>
-</div>
 
+    <%--get방식 보내는 정규식--%>
+    <script>
+        function replaceQueryParam(param, newval, search) {
+            let regex = new RegExp("([?;&])" + param + "[^&;]*[;&]?");
+            let query = search.replace(regex, "$1").replace(/&$/, '');
+
+            return (query.length > 2 ? query + "&" : "?") + (newval ? param + "=" + newval : '');
+        }
+
+        function goPage(page) {
+            location.href = location.pathname + replaceQueryParam("page", page, window.location.search);
+        }
+    </script>
 
 <jsp:include page="../../layout/footer.jsp">
     <jsp:param name="pageName" value="footer"/>
