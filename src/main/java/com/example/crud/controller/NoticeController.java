@@ -2,6 +2,7 @@ package com.example.crud.controller;
 
 import com.example.crud.domain.*;
 import com.example.crud.repository.NoticeRepository;
+import com.example.crud.service.FileService;
 import com.example.crud.service.NoticeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -21,14 +23,21 @@ public class NoticeController {
     private final NoticeService noticeService;
     private final NoticeRepository noticeRepository;
 
+    private final FileService fileService;
+
     public static final int PAGE_SIZE = 5;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //문의하기
-    //글작성,수정하기
     @PostMapping("/writePro")
-    public String writePro(CommonNotice commonNotice){
+    public String writePro(CommonNotice commonNotice, MultipartFile file) throws Exception {
 
+       /*파일이 있으면 파일 출력, 없으면 없는 대로 출력*/
+        if (file != null){
+            commonNotice.setCommonNoticeFile(fileService.fileUpload(file));
+        }
+
+        //글작성,수정하기
         if(commonNotice.getCommonContentIdx() != 0){
             // update
             noticeService.updateQuestions(commonNotice);
@@ -126,6 +135,7 @@ public class NoticeController {
             commonNotice.setCommonContentIdx(contents.getContentIdx());
             commonNotice.setCommonNoticeSubject(contents.getContentSubject());
             commonNotice.setCommonNoticeText(contents.getContentText());
+            commonNotice.setCommonNoticeFile(contents.getContentFile());
         }
         //commonNotice로 보내기
         return new ModelAndView("/notice/questions_write_form")
@@ -173,22 +183,7 @@ public class NoticeController {
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //페이징 처리
 
-//    @RequestMapping(path="/questions/page")
-//    public ModelAndView questionsPage(@RequestParam(defaultValue = "1") int page){
-//
-//        //리턴 받은 page를 가져와서 전체 목록 개수 반환
-//        Page pageCount = noticeService.getPageCount(page);
-//
-//        //삽입한 글 가져와서 faq에 반환환
-//       List<Content> faq= noticeService.appearNoticeInfo();
-//
-//        return new ModelAndView("/notice/questions")
-//                .addObject("page",pageCount)
-//                .addObject("faq",faq);
-//
-//    }
 
 
 

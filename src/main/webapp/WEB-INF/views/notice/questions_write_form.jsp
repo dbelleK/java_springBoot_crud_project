@@ -171,7 +171,7 @@
 <div class="CommunityContentShow__q CommunityContentShow__box">
     <div class="CommunityQuestionHead CommunityContentShow__q--header">
 
-        <form name="writeform" class="write-form" action="/writePro" method="post">
+        <form name="writeform" class="write-form" action="/writePro" method="post" enctype="multipart/form-data">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
             <jsp:include page="write_base.jsp">
@@ -184,6 +184,8 @@
                 <div class="button_write_back">
 
                     <c:if test="${empty commonNotice.commonContentIdx}">
+
+
                         <div class="bt_wrap1" style="float: left">
                             <button type="submit" class="ButtonInteractive_container__NfRis ButtonInteractive_withIcon__ECQZi"
                                     style="padding: 1.2rem 2.7rem 0.8rem 2.2rem;">
@@ -197,9 +199,11 @@
                                 <span class="Header_buttonText__zPcGR">뒤로가기</span>
                             </a>
                         </div>
+
                     </c:if>
 
                     <c:if test="${not empty commonNotice.commonContentIdx}">
+
                         <div class="bt_wrap1" style="float: left">
                             <input type="hidden" name="commonContentIdx" value="${commonNotice.commonContentIdx}">
                             <button type="submit" class="ButtonInteractive_container__NfRis ButtonInteractive_withIcon__ECQZi"

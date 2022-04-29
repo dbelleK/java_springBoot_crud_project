@@ -7,23 +7,22 @@
 
         <strong class="boardTitle">제목</strong>
         <div class="CommunityQuestionHead__title">
-        <c:if test="${empty commonNotice.commonNoticeSubject}">
-            <input class="CommunityQuestionHead__title--text CommunityQuestionHead__title--noLink"
-                   id="contentSubject" name="commonNoticeSubject" data-cy="threads-title" type="text"
-                   placeholder="문의하실 주 제목을 적어주세요">
-        </c:if>
+            <c:if test="${empty commonNotice.commonNoticeSubject}">
+                <input class="CommunityQuestionHead__title--text CommunityQuestionHead__title--noLink"
+                       id="contentSubject" name="commonNoticeSubject" data-cy="threads-title" type="text"
+                       placeholder="문의하실 주 제목을 적어주세요">
+            </c:if>
 
-        <c:if test="${not empty commonNotice.commonNoticeSubject}">
-            <input class="CommunityQuestionHead__title--text CommunityQuestionHead__title--noLink"
-                   id="contentSubject" name="commonNoticeSubject" data-cy="threads-title" type="text"
-                   placeholder="문의하실 주 제목을 적어주세요" value="${commonNotice.commonNoticeSubject}">
-        </c:if>
+            <c:if test="${not empty commonNotice.commonNoticeSubject}">
+                <input class="CommunityQuestionHead__title--text CommunityQuestionHead__title--noLink"
+                       id="contentSubject" name="commonNoticeSubject" data-cy="threads-title" type="text"
+                       placeholder="문의하실 주 제목을 적어주세요" value="${commonNotice.commonNoticeSubject}">
+            </c:if>
 
         </div>
         <hr>
     </div>
 </div>
-
 
 
 <div class="CommunityEachBody question">
@@ -40,6 +39,9 @@
                                       placeholder="문의하실 내용을 적어주세요">${commonNotice.commonNoticeText}</textarea>
 
                         </div>
+                        <c:if test="${not empty commonNotice.commonNoticeFile}">
+                            <img src="${commonNotice.commonNoticeFile}">
+                        </c:if>
                     </div>
                 </div>
             </div>
@@ -47,48 +49,13 @@
     </div>
 </div>
 
+<%--파일업로드--%>
+<h1>File Upload Example</h1>
+<%--<form method="post" action="/upload" enctype="multipart/form-data">--%>
+<%--    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>--%>
 
-
-<%--    <div class="CommunityEachBody__commentContainer">--%>
-<%--        <div class="CommunityCommentTemplate">--%>
-<%--            <div class="button_write_back">--%>
-
-<%--                <c:if test="${empty commonNotice.commonContentIdx}">--%>
-<%--                  <div class="bt_wrap1" style="float: left">--%>
-<%--                    <button type="submit" class="ButtonInteractive_container__NfRis ButtonInteractive_withIcon__ECQZi"--%>
-<%--                            style="padding: 1.2rem 2.7rem 0.8rem 2.2rem;">--%>
-<%--                        <span class="Header_buttonText__zPcGR">작성완료</span>--%>
-<%--                    </button>--%>
-<%--                  </div>--%>
-
-<%--                    <div class="bt_wrap2">--%>
-<%--                        <a href="faq" class="ButtonInteractive_container__NfRis ButtonInteractive_withIcon__ECQZi"--%>
-<%--                           style="padding: 1.2rem 2.7rem 0.8rem 2.2rem;">--%>
-<%--                            <span class="Header_buttonText__zPcGR">뒤로가기</span>--%>
-<%--                        </a>--%>
-<%--                    </div>--%>
-<%--                </c:if>--%>
-
-<%--                <c:if test="${not empty commonNotice.commonContentIdx}">--%>
-<%--                    <div class="bt_wrap1" style="float: left">--%>
-<%--                        <input type="hidden" name="commonContentIdx" value="${commonNotice.commonContentIdx}">--%>
-<%--                        <button type="submit" class="ButtonInteractive_container__NfRis ButtonInteractive_withIcon__ECQZi"--%>
-<%--                                style="padding: 1.2rem 2.7rem 0.8rem 2.2rem;">--%>
-<%--                            <span class="Header_buttonText__zPcGR">수정하기</span>--%>
-<%--                        </button>--%>
-<%--                    </div>--%>
-
-<%--                    <div class="bt_wrap2">--%>
-<%--                     <a href="deletePro?commonContentIdx=${commonNotice.commonContentIdx}" class="ButtonInteractive_container__NfRis ButtonInteractive_withIcon__ECQZi"--%>
-<%--                       style="padding: 1.2rem 2.7rem 0.8rem 2.2rem;">--%>
-<%--                        <span class="Header_buttonText__zPcGR">삭제하기</span>--%>
-<%--                    </a>--%>
-
-<%--                 </div>--%>
-<%--                </c:if>--%>
-
-<%--            </div>--%>
-<%--        </div>--%>
-<%--    </div>--%>
+    <input type="file" name="file"/>
+<%--    <input type="submit" value="submit"/>--%>
+<%--</form>--%>
 
 

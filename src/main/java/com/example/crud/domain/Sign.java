@@ -15,7 +15,9 @@ public class Sign {
     private String address;
     private String birthday;
     private String kakaoId;
+
     private String profile;
+    private String filePath;
 
     private String newPass;
     private String newPassCheck;

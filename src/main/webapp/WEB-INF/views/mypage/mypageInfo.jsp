@@ -44,7 +44,7 @@
                         <input type="hidden" name="rncheck" value="authCellphone">
                         <input type="hidden" name="mode" value="modify">
 
-
+<form>
                         <section>
                             <!-- 회원가입/정보 기본정보 -->
                             <div class="base_info_box">
@@ -142,6 +142,13 @@
                                                     <input type="text" name="addressSub"/>
                                                 </div>
                                             </div>
+
+<%--                                            <div class="form-group">--%>
+<%--                                                <label for="board_file">첨부 이미지</label>--%>
+<%--                                                <img src="${root }image/logo.png" width="100%"/>--%>
+<%--                                                <input type="file" name="board_file" id="board_file" class="form-control" accept="image/*"/>--%>
+<%--                                            </div>--%>
+
                                         </td>
                                         </tr>
                                         </tbody>

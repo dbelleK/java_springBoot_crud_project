@@ -17,7 +17,7 @@
 
     <!--3. 수정하기-->
     <update id="updateQuestions" parameterType="Content">
-        update taehan.CONTENT set contentSubject=#{commonNoticeSubject}, contentText=#{commonNoticeText}
+        update taehan.CONTENT set contentSubject=#{commonNoticeSubject}, contentText=#{commonNoticeText}, contentFile={commonNoticeFile}
         where contentIdx=#{commonContentIdx}
     </update>
 

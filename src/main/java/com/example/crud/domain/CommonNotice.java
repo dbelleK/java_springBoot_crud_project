@@ -15,7 +15,6 @@ public class CommonNotice {
 
     private String commonNoticeApply; //리뷰답변
 
-    private MultipartFile commonNoticeUploadFile; //파일
     private String commonNoticeFile;
 
     private int commonNoticeWriterIdx; //글쓴사람번호

@@ -53,7 +53,7 @@ public interface NoticeRepository {
 
     //문의하기
     //페이지 수
-    public int getPageCount();
+    int getPageCount();
 
     //리뷰하기
     int getPageCountReview();

@@ -13,7 +13,6 @@ public class Content {
     private String contentSubject; //글제목
     private String contentText; //글내용
 
-    private MultipartFile uploadFile; //파일
     private String contentFile;
 
     private int contentWriterIdx; //글쓴사람번호

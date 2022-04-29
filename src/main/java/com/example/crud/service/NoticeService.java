@@ -25,6 +25,7 @@ public class NoticeService {
         //공통제목에서 가져와서 content에 저장
         content.setContentSubject(commonNotice.getCommonNoticeSubject());
         content.setContentText(commonNotice.getCommonNoticeText());
+        content.setContentFile(commonNotice.getCommonNoticeFile());
 
         noticeRepository.writeUserInfo(content);
     }

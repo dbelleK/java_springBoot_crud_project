@@ -20,11 +20,11 @@ public class PageInfo {
     private int itemCountTotal; //전체 아이템 수
     private int start;
 
-    public PageInfo(Integer currentPage){
-        //현재 페이지가 1보다 작거나 null이면 1 그렇지 않으면 현재페이지 보여줌
-        this.currentPage = currentPage == null || currentPage < 1 ? 1: currentPage;
-        this.start = computeStart();
-    }
+//    public PageInfo(Integer currentPage){
+//        //현재 페이지가 1보다 작거나 null이면 1 그렇지 않으면 현재페이지 보여줌
+//        this.currentPage = currentPage == null || currentPage < 1 ? 1: currentPage;
+//        this.start = computeStart();
+//    }
 
     public PageInfo(Integer currentPage, Integer itemCountPerPage){
         //현재 페이지가 1보다 작으면 1 그렇지 않으면 현재페이지 보여줌

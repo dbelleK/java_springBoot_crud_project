@@ -31,9 +31,7 @@ public class IndexController {
 
     //http://localhost8082
     @RequestMapping(path = {""})
-//    public ModelAndView index(Principal principal, @RequestParam(value = "logout", defaultValue = "false") Boolean logout ,Page page, PageInfo pageInfos) {
     public ModelAndView index(Principal principal, @RequestParam(value = "logout", defaultValue = "false") Boolean logout) {
-
 
         //문의하기
         /*page:1 -> page가 1페이지인것 출력, page:2 -> page가 2페이지인것*/
